@@ -28,6 +28,7 @@ public class MyAdapter implements Job2dDriver {
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 
+		setPosition(x, y);
 		drawPanelController.drawLine(line);
 	}
 
