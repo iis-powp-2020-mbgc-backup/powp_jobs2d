@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.MyAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -52,8 +53,10 @@ public class TestJobs2dPatterns {
 	 */
 	private static void setupDefaultDrawerVisibilityManagement(Application application) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
+
+		//application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
+		//		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
+
 		defaultDrawerWindow.setVisible(true);
 	}
 
@@ -94,5 +97,19 @@ public class TestJobs2dPatterns {
 			}
 		});
 	}
+
+//	/**
+//	 * Draw line in panel.
+//	 *
+//	 * @param line line.
+//	 */
+//	public void drawLine(final ILine line) {
+//		try {
+//			getDrawPanelUI().drawLine((ILine) line.clone());
+//		} catch (CloneNotSupportedException e) {
+//			e.printStackTrace();
+//		}
+//		getDrawArea().repaint();
+//	}
 
 }

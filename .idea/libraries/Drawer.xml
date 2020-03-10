@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Drawer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/Drawer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Jobs2dMagic.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/PowpAppBase.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/Drawer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Jobs2dMagic.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/PowpAppBase.jar!/" />
+    </SOURCES>
+  </library>
+</component>
