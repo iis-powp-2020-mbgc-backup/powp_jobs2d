@@ -27,6 +27,7 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 	}
 
 	/**
@@ -45,17 +46,17 @@ public class TestJobs2dPatterns {
 		DriverFeature.updateDriverInfo();
 	}
 
-	/**
-	 * Auxiliary routines to enable using Buggy Simulator.
-	 * 
-	 * @param application Application context.
-	 */
-	private static void setupDefaultDrawerVisibilityManagement(Application application) {
-		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(true);
-	}
+//	/**
+//	 * Auxiliary routines to enable using Buggy Simulator.
+//	 *
+//	 * @param application Application context.
+//	 */
+//	private static void setupDefaultDrawerVisibilityManagement(Application application) {
+//		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
+//		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
+//				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
+//		defaultDrawerWindow.setVisible(true);
+//	}
 
 	/**
 	 * Setup menu for adjusting logging settings.
@@ -83,7 +84,7 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-				setupDefaultDrawerVisibilityManagement(app);
+				//setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
