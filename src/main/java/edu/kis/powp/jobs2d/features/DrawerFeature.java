@@ -25,7 +25,7 @@ public class DrawerFeature {
 
 	/**
 	 * Get controller of application drawing panel.
-	 * 
+	 *
 	 * @return drawPanelController.
 	 */
 	public static DrawPanelController getDrawerController() {
