@@ -89,6 +89,7 @@ public class TestJobs2dPatterns {
 				setupDrivers(app);
 				setupPresetTests(app);
 				setupLogger(app);
+			
 
 				app.setVisibility(true);
 			}

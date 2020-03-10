@@ -26,9 +26,11 @@ public class MyAdapter extends DrawPanelController implements Job2dDriver {
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
-
 		drawLine(line);
 	}
+
+
+
 
 	@Override
 	public String toString() {
