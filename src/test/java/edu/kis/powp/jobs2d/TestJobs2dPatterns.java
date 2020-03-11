@@ -46,18 +46,6 @@ public class TestJobs2dPatterns {
 	}
 
 	/**
-	 * Auxiliary routines to enable using Buggy Simulator.
-	 * 
-	 * @param application Application context.
-	 */
-	private static void setupDefaultDrawerVisibilityManagement(Application application) {
-		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(false);
-	}
-
-	/**
 	 * Setup menu for adjusting logging settings.
 	 * 
 	 * @param application Application context.
@@ -82,7 +70,6 @@ public class TestJobs2dPatterns {
 		EventQueue.invokeLater(() -> {
 			Application app = new Application("2d jobs Visio");
 			DrawerFeature.setupDrawerPlugin(app);
-			setupDefaultDrawerVisibilityManagement(app);
 
 			DriverFeature.setupDriverPlugin(app);
 			setupDrivers(app);
