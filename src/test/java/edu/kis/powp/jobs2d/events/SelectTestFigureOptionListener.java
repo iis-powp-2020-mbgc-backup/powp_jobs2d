@@ -8,14 +8,22 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
-	private DriverManager driverManager;
+    private DriverManager driverManager;
+    private FigureJoe figureToDraw;
 
-	public SelectTestFigureOptionListener(DriverManager driverManager) {
-		this.driverManager = driverManager;
-	}
+    public SelectTestFigureOptionListener(DriverManager driverManager, FigureJoe figureJoe) {
+        this.driverManager = driverManager;
+        this.figureToDraw = figureJoe;
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		FiguresJoe.figureScript1(driverManager.getCurrentDriver());
-	}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (figureToDraw) {
+            case FIGURE_1:
+                FiguresJoe.figureScript1(driverManager.getCurrentDriver());
+                break;
+            case FIGURE_2:
+                FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+        }
+    }
 }
