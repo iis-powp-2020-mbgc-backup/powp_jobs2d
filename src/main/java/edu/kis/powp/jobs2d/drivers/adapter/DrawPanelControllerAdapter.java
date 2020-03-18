@@ -32,8 +32,7 @@ public class DrawPanelControllerAdapter implements Job2dDriver {
 		setPosition(x, y);
 	}
 
-	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Regular line driver";
 	}
 }
