@@ -42,9 +42,9 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver1 = new DrawPanelAdapter();
+		Job2dDriver testDriver1 = new DrawPanelAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Basic Line", testDriver1);
-		Job2dDriver testDriver2 = new SpecialLineDrawPanelAdapter();
+		Job2dDriver testDriver2 = new SpecialLineDrawPanelAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Special Line", testDriver2);
 
 		DriverFeature.updateDriverInfo();

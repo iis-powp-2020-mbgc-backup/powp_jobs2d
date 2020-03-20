@@ -6,11 +6,12 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
 
-public class SpecialLineDrawPanelAdapter extends DrawPanelController implements Job2dDriver {
+public class SpecialLineDrawPanelAdapter implements Job2dDriver {
     private int startX = 0, startY = 0;
+    private DrawPanelController drawPanelController;
 
-    public SpecialLineDrawPanelAdapter() {
-        super();
+    public SpecialLineDrawPanelAdapter(DrawPanelController drawPanelController) {
+        this.drawPanelController = drawPanelController;
     }
 
     @Override
@@ -25,7 +26,7 @@ public class SpecialLineDrawPanelAdapter extends DrawPanelController implements 
         line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
 
-        super.drawLine(line);
+        drawPanelController.drawLine(line);
 
         setPosition(x, y);
     }
