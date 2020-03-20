@@ -27,6 +27,7 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 	}
 
 	/**
@@ -41,7 +42,7 @@ public class TestJobs2dPatterns {
 
 		DrawPanelController drawPanelController = new DrawPanelController();
 		Job2dDriver testDriver = new Jobs2dDriverToDrawerAdapter(drawPanelController);
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		DriverFeature.addDriver("Jobs2d Drawer Simulator", testDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
@@ -84,7 +85,6 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-				setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
