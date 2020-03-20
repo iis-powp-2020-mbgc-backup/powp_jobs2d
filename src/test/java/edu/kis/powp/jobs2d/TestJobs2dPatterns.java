@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.DrawingControllerAdapter;
-import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawSpecialPanelAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -24,15 +24,15 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), "Joe1");
+		SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), SelectTestFigureOptionListener.ScriptNumber.basic);
+
+		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), SelectTestFigureOptionListener.ScriptNumber.special);
 
 
-
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-
-		selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(), "Joe2");
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
 	}
 
 
@@ -46,10 +46,10 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new DrawingControllerAdapter();
+		Job2dDriver testDriver = new DrawPanelAdapter();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
-		Job2dDriver testDriver1 = new SpecialLineAdapter();
+		Job2dDriver testDriver1 = new DrawSpecialPanelAdapter();
 		DriverFeature.addDriver("Special Line", testDriver1);
 
 		DriverFeature.updateDriverInfo();

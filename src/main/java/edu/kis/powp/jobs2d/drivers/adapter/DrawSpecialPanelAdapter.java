@@ -4,18 +4,15 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
-
-import javax.swing.*;
-
-import static edu.kis.powp.jobs2d.features.DrawerFeature.getDrawerController;
+import edu.kis.powp.jobs2d.features.DrawerFeature;
 
 /**
  * driver adapter to drawer with several bugs.
  */
-public class SpecialLineAdapter extends DrawPanelController implements Job2dDriver {
+public class DrawSpecialPanelAdapter extends DrawPanelController implements Job2dDriver {
     private int startX = 0, startY = 0;
 
-    public SpecialLineAdapter() {
+    public DrawSpecialPanelAdapter() {
         super();
     }
 
@@ -32,7 +29,7 @@ public class SpecialLineAdapter extends DrawPanelController implements Job2dDriv
         line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
 
-        getDrawerController().drawLine(line);
+        DrawerFeature.getDrawerController().drawLine(line);
         setPosition(x,y);
 
     }

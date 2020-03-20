@@ -8,21 +8,26 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
-	private DriverManager driverManager;
-	private String name;
+	public enum ScriptNumber {
+		basic, special
+	}
+	private ScriptNumber scriptNumber;
 
-	public SelectTestFigureOptionListener(DriverManager driverManager, String n)
+	private DriverManager driverManager;
+	private ScriptNumber script;
+
+	public SelectTestFigureOptionListener(DriverManager driverManager, ScriptNumber num)
 	{
 		this.driverManager = driverManager;
-		this.name = n;
+		this.script = num;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (name.equals("Joe1"))
+		if (script.equals(ScriptNumber.basic))
 			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
-		else
+		else if (script.equals(ScriptNumber.special))
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 
 	}
