@@ -25,12 +25,20 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener figureJoe1Listener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), DriverFeature.Figure.JOE_1);
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
-		application.addTest("Figure Jane", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", figureJoe1Listener);
+
+		SelectTestFigureOptionListener figureJoe2Listener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), DriverFeature.Figure.JOE_2);
+
+		application.addTest("Figure Joe 2", figureJoe2Listener);
+
+		SelectTestFigureOptionListener figureJaneListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), DriverFeature.Figure.JANE);
+
+		application.addTest("Figure Jane", figureJaneListener);
 
 	}
 
@@ -94,7 +102,6 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-				//setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
