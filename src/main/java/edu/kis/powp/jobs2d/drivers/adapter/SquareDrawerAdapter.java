@@ -9,10 +9,9 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 /**
  * driver adapter to drawer with several bugs.
  */
-public class MyAdapter implements Job2dDriver {
+public class SquareDrawerAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
-	private DrawPanelController controller;
-	public MyAdapter() {
+	public SquareDrawerAdapter() {
 		super();
 	}
 
@@ -37,11 +36,4 @@ public class MyAdapter implements Job2dDriver {
 		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
 	}
 
-	public DrawPanelController getController() {
-		return controller;
-	}
-
-	public void setController(DrawPanelController controller) {
-		this.controller = controller;
-	}
 }
