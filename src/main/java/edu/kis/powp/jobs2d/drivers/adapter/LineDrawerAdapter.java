@@ -3,11 +3,9 @@ package edu.kis.powp.jobs2d.drivers.adapter;
 
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-/**
- * Driver Adapter for line drawing
- */
 public class LineDrawerAdapter implements Job2dDriver {
 
     private DrawPanelController controller;
@@ -18,6 +16,23 @@ public class LineDrawerAdapter implements Job2dDriver {
     public LineDrawerAdapter(DrawPanelController controller, ILine lineToDraw) {
         this.controller = controller;
         this.lineToDraw = lineToDraw;
+    }
+
+    public LineDrawerAdapter(DrawPanelController controller, LineType type){
+        this.controller = controller;
+        switch(type){
+
+            case BASIC:
+                this.lineToDraw = LineFactory.getBasicLine();
+            case DOTTED:
+                this.lineToDraw = LineFactory.getDottedLine();
+                break;
+            case SPECIAL:
+                this.lineToDraw = LineFactory.getSpecialLine();
+                break;
+            default:
+                throw new IllegalArgumentException("Wrong type of line: " + type.name());
+        }
     }
 
     @Override
@@ -34,4 +49,10 @@ public class LineDrawerAdapter implements Job2dDriver {
         this.controller.drawLine(this.lineToDraw);
         setPosition(destX, destY);
     }
+
+    @Override
+    public String toString() {
+        return "Line drawer adapter";
+    }
+
 }
