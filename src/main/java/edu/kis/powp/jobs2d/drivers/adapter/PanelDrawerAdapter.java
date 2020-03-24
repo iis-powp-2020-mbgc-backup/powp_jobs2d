@@ -10,12 +10,12 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
  * driver adapter to drawer with several bugs.
  */
 
-public class DrawPanelAdapter extends DrawerFeature implements Job2dDriver {
+public class PanelDrawerAdapter extends DrawerFeature implements Job2dDriver {
 	private int startX = 0;
 	private int startY = 0;
 	private DrawPanelController drawPanelController;
 
-	public DrawPanelAdapter() {
+	public PanelDrawerAdapter() {
 		drawPanelController = getDrawerController();
 	}
 
