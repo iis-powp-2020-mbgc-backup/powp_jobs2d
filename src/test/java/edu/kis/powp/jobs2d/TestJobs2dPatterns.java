@@ -18,6 +18,8 @@ import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 
+import javax.swing.*;
+
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	
@@ -29,6 +31,7 @@ public class TestJobs2dPatterns {
 	private static void setupPresetTests(Application application) {
 		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureType.FIGURE_JOE_1));
 		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureType.FIGURE_JOE_2));
+		application.addTest("JANE", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureType.JANE));
 	}
 	
 	/**
@@ -55,7 +58,7 @@ public class TestJobs2dPatterns {
 		
 		Job2dDriver configurableTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), ExtendedLineFactory.getConfigurableLine());
 		DriverFeature.addDriver("Configurable Line Drawer Simulator", configurableTypesDriver);
-		
+
 		DriverFeature.updateDriverInfo();
 	}
 	
