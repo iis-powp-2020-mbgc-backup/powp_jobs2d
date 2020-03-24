@@ -2,7 +2,7 @@ package edu.kis.powp.jobs2d;
 
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.jobs2d.Job2dDriver;
-import edu.kis.powp.jobs2d.drivers.adapter.MyAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelAdapter;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
@@ -12,7 +12,7 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
  * @author Dominik
  */
 public class Job2dDriverTest {
-	private static Job2dDriver driver = new MyAdapter();
+	private static Job2dDriver driver = new DrawPanelAdapter();
 
 	/**
 	 * Driver test.
