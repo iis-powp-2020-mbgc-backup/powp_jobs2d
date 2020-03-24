@@ -9,11 +9,12 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 /**
  * driver adapter to drawer with several bugs.
  */
-public class MyDrawerAdapter extends DrawPanelController implements Job2dDriver {
+public class MyDrawerAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
+	private DrawPanelController drawPanelController;
 
-	public MyDrawerAdapter() {
-		super();
+	public MyDrawerAdapter(DrawPanelController drawPanelController) {
+		this.drawPanelController = drawPanelController;
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class MyDrawerAdapter extends DrawPanelController implements Job2dDriver 
 		line.setEndCoordinates(x, y);
 		setPosition(x, y);
 
-		DrawerFeature.getDrawerController().drawLine(line);
+		drawPanelController.drawLine(line);
 	}
 
 	@Override
