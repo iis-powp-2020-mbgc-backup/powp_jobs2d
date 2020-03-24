@@ -30,6 +30,7 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				break;
 			case JANE:
 				FiguresJane.figureScript(new DriverAdapter(driverManager.getCurrentDriver()));
+				break;
 		}
 	}
 }
