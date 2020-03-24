@@ -1,6 +1,6 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,7 +9,9 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.adapter.ConfigurableLine;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawController;
+import edu.kis.powp.jobs2d.drivers.adapter.ExtendedLineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawController;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -42,14 +44,17 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DrawController(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Drawer Simulator", testDriver);
 		
-		Job2dDriver basicLineTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), LineFactory.getBasicLine());
+		Job2dDriver basicLineTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), ExtendedLineFactory.getBasicLine());
 		DriverFeature.addDriver("Basic Line Drawer Simulator", basicLineTypesDriver);
 		
-		Job2dDriver specialLineTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), LineFactory.getSpecialLine());
+		Job2dDriver specialLineTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), ExtendedLineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line Drawer Simulator", specialLineTypesDriver);
 		
-		Job2dDriver dottedLineTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), LineFactory.getDottedLine());
+		Job2dDriver dottedLineTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), ExtendedLineFactory.getDottedLine());
 		DriverFeature.addDriver("Dotted Line Drawer Simulator", dottedLineTypesDriver);
+		
+		Job2dDriver configurableTypesDriver = new LineDrawController(DrawerFeature.getDrawerController(), ExtendedLineFactory.getConfigurableLine());
+		DriverFeature.addDriver("Configurable Line Drawer Simulator", configurableTypesDriver);
 		
 		DriverFeature.updateDriverInfo();
 	}
