@@ -10,6 +10,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Drawer" level="project" />
+    <orderEntry type="library" name="Jobs2dMagic" level="project" />
+    <orderEntry type="library" name="PowpAppBase" level="project" />
+    <orderEntry type="library" name="R User Library" level="project" />
+    <orderEntry type="library" name="R Skeletons" level="application" />
     <orderEntry type="module-library">
       <library name="Maven: edu.kis.powp.jobs2d:jobs2dmagic:1.0.0">
         <CLASSES>
@@ -37,8 +42,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Drawer" level="project" />
-    <orderEntry type="library" name="Jobs2dMagic" level="project" />
-    <orderEntry type="library" name="PowpAppBase" level="project" />
   </component>
 </module>
