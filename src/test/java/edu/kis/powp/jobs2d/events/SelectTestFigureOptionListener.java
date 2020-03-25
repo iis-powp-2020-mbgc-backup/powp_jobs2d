@@ -20,10 +20,15 @@ public class SelectTestFigureOptionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (drawingType == DrawingType.FIGURE_1) {
-			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
-		} else {
-			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+		switch(drawingType) {
+			case FIGURE_1:
+				FiguresJoe.figureScript1(driverManager.getCurrentDriver());
+				break;
+			case FIGURE_2:
+				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+				break;
+			default:
+				break;
 		}
 	}
 }
