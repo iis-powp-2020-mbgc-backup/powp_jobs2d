@@ -37,8 +37,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Drawer" level="project" />
     <orderEntry type="library" name="Jobs2dMagic" level="project" />
+    <orderEntry type="library" name="Drawer" level="project" />
     <orderEntry type="library" name="PowpAppBase" level="project" />
   </component>
 </module>
