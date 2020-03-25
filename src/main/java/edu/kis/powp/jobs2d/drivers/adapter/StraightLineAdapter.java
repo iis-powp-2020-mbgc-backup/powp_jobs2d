@@ -9,10 +9,10 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 /**
  * driver adapter to drawer with several bugs.
  */
-public class MyAdapter extends DrawPanelController implements Job2dDriver {
+public class StraightLineAdapter extends DrawPanelController implements Job2dDriver {
 	private int startX = 0, startY = 0;
 	private DrawPanelController drawController;
-	public MyAdapter() {
+	public StraightLineAdapter() {
 		super();
 		drawController = DrawerFeature.getDrawerController();
 	}
@@ -36,6 +36,6 @@ public class MyAdapter extends DrawPanelController implements Job2dDriver {
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Buggy Simulator";
 	}
 }
