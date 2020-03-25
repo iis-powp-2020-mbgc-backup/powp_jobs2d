@@ -1,6 +1,6 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,7 +9,9 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.IModifiableLine;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.ModifiableLineAdapter;
 import edu.kis.powp.jobs2d.events.SecondTestFigureOptionListener;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.FirstTestFigureOptionListener;
@@ -44,14 +46,31 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver basicLineDriver = new LineDrawerAdapter(LineFactory.getBasicLine());
-		DriverFeature.addDriver("Basic Simulator", basicLineDriver);
+		IModifiableLine basicThinLine = new ModifiableLineAdapter();
+		basicThinLine.setColor(Color.RED);
+		basicThinLine.setThickness(1);
+		Job2dDriver basicThinLineDriver = new LineDrawerAdapter(basicThinLine);
+		DriverFeature.addDriver("Basic Thin Red Simulator", basicThinLineDriver);
 
-		Job2dDriver dottedLineDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
-		DriverFeature.addDriver("Dotted Simulator", dottedLineDriver);
+		IModifiableLine basicThickLine = new ModifiableLineAdapter();
+		basicThickLine.setColor(Color.BLUE);
+		basicThickLine.setThickness(5);
+		Job2dDriver basicThickLineDriver = new LineDrawerAdapter(basicThickLine);
+		DriverFeature.addDriver("Basic Thick Blue Simulator", basicThickLineDriver);
 
-		Job2dDriver specialLineDriver = new LineDrawerAdapter(LineFactory.getSpecialLine());
-		DriverFeature.addDriver("Special Simulator", specialLineDriver);
+		IModifiableLine dottedThinLine = new ModifiableLineAdapter();
+		dottedThinLine.setColor(Color.YELLOW);
+		dottedThinLine.setThickness(1);
+		dottedThinLine.setDotted(true);
+		Job2dDriver dottedThinLineDriver = new LineDrawerAdapter(dottedThinLine);
+		DriverFeature.addDriver("Dotted Thin Yellow Simulator", dottedThinLineDriver);
+
+		IModifiableLine dottedThickLine = new ModifiableLineAdapter();
+		dottedThickLine.setColor(Color.GREEN);
+		dottedThickLine.setThickness(5);
+		dottedThickLine.setDotted(true);
+		Job2dDriver dottedThickLineDriver = new LineDrawerAdapter(dottedThickLine);
+		DriverFeature.addDriver("Dotted Thick Green Simulator", dottedThickLineDriver);
 
 		DriverFeature.updateDriverInfo();
 	}

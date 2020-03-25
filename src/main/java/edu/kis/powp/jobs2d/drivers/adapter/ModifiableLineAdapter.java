@@ -7,6 +7,18 @@ import java.awt.*;
 
 public class ModifiableLineAdapter extends AbstractLine implements IModifiableLine
 {
+    public ModifiableLineAdapter()
+    {
+        super();
+    }
+
+    public ModifiableLineAdapter(Color color, float thickness, boolean dotted)
+    {
+        this.color = color;
+        this.thickness = thickness;
+        this.dotted = dotted;
+    }
+
     @Override
     public void setColor(Color color)
     {
