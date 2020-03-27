@@ -11,31 +11,32 @@ import javax.swing.*;
  * driver adapter to drawer with several bugs.
  */
 public class Job2dDriverAdapter implements Job2dDriver {
-	private int startX = 0, startY = 0;
-	private DrawPanelController drawPanelController;
 
-	public Job2dDriverAdapter(DrawPanelController drawPanelController) {
-		this.drawPanelController = drawPanelController;
-	}
+    private int startX = 0, startY = 0;
+    private DrawPanelController drawPanelController;
 
-	@Override
-	public void setPosition(int x, int y) {
-		this.startX = x;
-		this.startY = y;
-	}
+    public Job2dDriverAdapter(DrawPanelController drawPanelController) {
+        this.drawPanelController = drawPanelController;
+    }
 
-	@Override
-	public void operateTo(int x, int y) {
-		ILine line = LineFactory.getBasicLine();
-		line.setStartCoordinates(this.startX, this.startY);
-		line.setEndCoordinates(x, y);
+    @Override
+    public void setPosition(int x, int y) {
+        this.startX = x;
+        this.startY = y;
+    }
 
-		drawPanelController.drawLine(line);
-		setPosition(x, y);
-	}
+    @Override
+    public void operateTo(int x, int y) {
+        ILine line = LineFactory.getBasicLine();
+        line.setStartCoordinates(this.startX, this.startY);
+        line.setEndCoordinates(x, y);
 
-	@Override
-	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
-	}
+        drawPanelController.drawLine(line);
+        setPosition(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+    }
 }
