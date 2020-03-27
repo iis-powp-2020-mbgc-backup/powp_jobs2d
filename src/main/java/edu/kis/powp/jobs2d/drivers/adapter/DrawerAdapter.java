@@ -36,6 +36,6 @@ public class DrawerAdapter implements Job2dDriver {
 
 	@Override
 	public String toString() {
-		return "Buggy Simulator";
+		return "Line Draw Simulator";
 	}
 }

@@ -37,6 +37,6 @@ public class LineDrawerAdapter implements Job2dDriver {
 
     @Override
     public String toString() {
-        return "Buggy Simulator (" + line.getClass().getSimpleName() + ")";
+        return "Line Draw Simulator (" + line.getClass().getSimpleName() + ")";
     }
 }
