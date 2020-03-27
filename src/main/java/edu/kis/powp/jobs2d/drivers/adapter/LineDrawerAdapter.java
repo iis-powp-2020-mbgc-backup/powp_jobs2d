@@ -5,6 +5,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
+import edu.kis.powp.jobs2d.factiories.SpecialLineFactory;
 
 public class LineDrawerAdapter implements Job2dDriver {
 
@@ -23,12 +24,15 @@ public class LineDrawerAdapter implements Job2dDriver {
         switch(type){
 
             case BASIC:
-                this.lineToDraw = LineFactory.getBasicLine();
+                this.lineToDraw = SpecialLineFactory.getBasicLine();
             case DOTTED:
-                this.lineToDraw = LineFactory.getDottedLine();
+                this.lineToDraw = SpecialLineFactory.getDottedLine();
                 break;
             case SPECIAL:
-                this.lineToDraw = LineFactory.getSpecialLine();
+                this.lineToDraw = SpecialLineFactory.getSpecialLine();
+                break;
+            case WITH_OPTIONS:
+                this.lineToDraw = SpecialLineFactory.getUserModifiableLine();
                 break;
             default:
                 throw new IllegalArgumentException("Wrong type of line: " + type.name());
