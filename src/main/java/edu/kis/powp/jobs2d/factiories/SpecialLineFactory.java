@@ -6,19 +6,19 @@ import edu.kis.powp.jobs2d.shapes.lines.UserModifiableLine;
 
 public final class SpecialLineFactory {
 
-    public static ILine getBasicLine(){
+    public static ILine getBasicLine() {
         return LineFactory.getBasicLine();
     }
 
-    public static ILine getDottedLine(){
+    public static ILine getDottedLine() {
         return LineFactory.getBasicLine();
     }
 
-    public static ILine getSpecialLine(){
+    public static ILine getSpecialLine() {
         return LineFactory.getSpecialLine();
     }
 
-    public static ILine getUserModifiableLine(){
+    public static ILine getUserModifiableLine() {
         return new UserModifiableLine();
     }
 }

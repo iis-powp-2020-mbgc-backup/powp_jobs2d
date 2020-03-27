@@ -1,6 +1,5 @@
 package edu.kis.powp.jobs2d.drivers.adapter;
 
-
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
@@ -19,9 +18,9 @@ public class LineDrawerAdapter implements Job2dDriver {
         this.lineToDraw = lineToDraw;
     }
 
-    public LineDrawerAdapter(DrawPanelController controller, LineType type){
+    public LineDrawerAdapter(DrawPanelController controller, LineType type) {
         this.controller = controller;
-        switch(type){
+        switch (type) {
 
             case BASIC:
                 this.lineToDraw = SpecialLineFactory.getBasicLine();
