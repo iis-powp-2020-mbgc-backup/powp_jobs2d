@@ -52,6 +52,7 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Basic line drawer adapter simulator", new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineType.BASIC));
 		DriverFeature.addDriver("Dotted line drawer adapter simulator", new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineType.DOTTED));
 		DriverFeature.addDriver("Special line drawer adapter simulator", new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineType.SPECIAL));
+		DriverFeature.addDriver("Modifiable line drawer adapter simulator", new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineType.WITH_OPTIONS));
 		DriverFeature.updateDriverInfo();
 	}
 

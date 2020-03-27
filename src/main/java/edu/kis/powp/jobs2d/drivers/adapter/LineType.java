@@ -5,5 +5,5 @@ package edu.kis.powp.jobs2d.drivers.adapter;
  */
 
 public enum LineType{
-    BASIC,DOTTED,SPECIAL
+    BASIC,DOTTED,SPECIAL,WITH_OPTIONS
 }
