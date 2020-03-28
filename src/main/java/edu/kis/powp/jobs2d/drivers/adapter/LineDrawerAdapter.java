@@ -18,26 +18,6 @@ public class LineDrawerAdapter implements Job2dDriver {
         this.lineToDraw = lineToDraw;
     }
 
-    public LineDrawerAdapter(DrawPanelController controller, LineType type) {
-        this.controller = controller;
-        switch (type) {
-
-            case BASIC:
-                this.lineToDraw = SpecialLineFactory.getBasicLine();
-            case DOTTED:
-                this.lineToDraw = SpecialLineFactory.getDottedLine();
-                break;
-            case SPECIAL:
-                this.lineToDraw = SpecialLineFactory.getSpecialLine();
-                break;
-            case WITH_OPTIONS:
-                this.lineToDraw = SpecialLineFactory.getUserModifiableLine();
-                break;
-            default:
-                throw new IllegalArgumentException("Wrong type of line: " + type.name());
-        }
-    }
-
     @Override
     public void setPosition(int toX, int toY) {
         this.x = toX;

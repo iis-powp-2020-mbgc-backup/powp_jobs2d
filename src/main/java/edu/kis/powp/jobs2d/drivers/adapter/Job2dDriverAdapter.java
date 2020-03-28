@@ -12,11 +12,13 @@ import javax.swing.*;
  */
 public class Job2dDriverAdapter implements Job2dDriver {
 
-    private int startX = 0, startY = 0;
+	private final ILine lineToDraw;
+	private int startX = 0, startY = 0;
     private DrawPanelController drawPanelController;
 
-    public Job2dDriverAdapter(DrawPanelController drawPanelController) {
+    public Job2dDriverAdapter(DrawPanelController drawPanelController, ILine lineToDraw) {
         this.drawPanelController = drawPanelController;
+        this.lineToDraw = lineToDraw;
     }
 
     @Override
@@ -27,12 +29,11 @@ public class Job2dDriverAdapter implements Job2dDriver {
 
     @Override
     public void operateTo(int x, int y) {
-        ILine line = LineFactory.getBasicLine();
-        line.setStartCoordinates(this.startX, this.startY);
-        line.setEndCoordinates(x, y);
+        this.lineToDraw.setStartCoordinates(this.startX, this.startY);
+        this.lineToDraw.setEndCoordinates(x, y);
 
-        drawPanelController.drawLine(line);
-        setPosition(x, y);
+        drawPanelController.drawLine(this.lineToDraw);
+        this.setPosition(x, y);
     }
 
     @Override
