@@ -2,6 +2,7 @@ package edu.kis.powp.jobs2d.drivers;
 
 import edu.kis.powp.jobs2d.Job2dDriver;
 import edu.kis.powp.jobs2d.LoggerDriver;
+import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 /**
  * Driver manager provides means to setup the driver. It also enables other
@@ -9,7 +10,24 @@ import edu.kis.powp.jobs2d.LoggerDriver;
  */
 public class DriverManager {
 
-	private Job2dDriver currentDriver = new LoggerDriver();
+	private static Job2dDriver currentDriver = new LoggerDriver();
+
+	private static class LoggerDriver implements Job2dDriver {
+		@Override
+		public void setPosition(int x, int y) {
+			System.out.println("Driver setPosition action...");
+		}
+
+		@Override
+		public void operateTo(int i, int i1) {
+			System.out.println("Driver operateTo action...");
+		}
+	}
+	public static void main(String[] args) {
+
+		FiguresJoe.figureScript1(currentDriver);
+	}
+
 
 	/**
 	 * @param driver Set the driver as current.
