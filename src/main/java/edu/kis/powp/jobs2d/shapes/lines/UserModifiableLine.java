@@ -27,7 +27,7 @@ public class UserModifiableLine extends AbstractLine {
     }
 
     public LineBuilder rebuilder() {
-        return new LineBuilder();
+        return new LineBuilder(this);
     }
 
     public static final class LineBuilder {
@@ -37,6 +37,12 @@ public class UserModifiableLine extends AbstractLine {
         private boolean dotted = DEFAULT_STYLE;
 
         private LineBuilder() {
+        }
+
+        private LineBuilder(UserModifiableLine userModifiableLine) {
+            thickness = userModifiableLine.thickness;
+            color = userModifiableLine.color;
+            dotted = userModifiableLine.dotted;
         }
 
         public LineBuilder withThickness(float thickness) {
