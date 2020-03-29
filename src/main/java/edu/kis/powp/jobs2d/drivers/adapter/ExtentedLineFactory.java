@@ -5,7 +5,7 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 
 public class ExtentedLineFactory extends LineFactory {
 
-    static public ILine getSelectionableLineAdapter(){
+    static public SelectionableLineAdapter getSelectionableLineAdapter(){
         return new SelectionableLineAdapter();
     }
 

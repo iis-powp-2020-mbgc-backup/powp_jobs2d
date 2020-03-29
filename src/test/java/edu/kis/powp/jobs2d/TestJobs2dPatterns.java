@@ -1,13 +1,15 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import edu.kis.legacy.drawer.shape.LineFactory;
+import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.adapter.ExtentedLineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.SelectionableLineAdapter;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
@@ -39,13 +41,19 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriverBasicLine = new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineFactory.getBasicLine());
-		Job2dDriver testDriverSpecialLine = new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineFactory.getSpecialLine());
-		Job2dDriver testDriverDottedLine = new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineFactory.getDottedLine());
+		Job2dDriver testDriverBasicLine = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtentedLineFactory.getBasicLine());
+		Job2dDriver testDriverSpecialLine = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtentedLineFactory.getSpecialLine());
+		Job2dDriver testDriverDottedLine = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtentedLineFactory.getDottedLine());
+
+		SelectionableLineAdapter selectionableLine = ExtentedLineFactory.getSelectionableLineAdapter();
+		selectionableLine.setColor(Color.BLUE);
+
+		Job2dDriver testDriverSelectionableLine = new LineDrawerAdapter(DrawerFeature.getDrawerController(), selectionableLine);
 
 		DriverFeature.addDriver("BasicLine Simulator", testDriverBasicLine);
 		DriverFeature.addDriver("SpecialLine Simulator", testDriverSpecialLine);
 		DriverFeature.addDriver("DottedLine Simulator", testDriverDottedLine);
+		DriverFeature.addDriver("SelectionableLine Simulator", testDriverSelectionableLine);
 
 		DriverFeature.updateDriverInfo();
 	}
