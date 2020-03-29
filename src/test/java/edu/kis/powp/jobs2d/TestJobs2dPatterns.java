@@ -1,17 +1,20 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelDriverAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.events.FigureType;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.line.ExtendedLineFactory;
+import edu.kis.powp.jobs2d.line.ModifiableLine;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -37,17 +40,23 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new DrawPanelDriverAdapter(DrawerFeature.getDrawerController());
+		Job2dDriver testDriver = new DrawDriverAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Draw Simulator", testDriver);
 
-		Job2dDriver testDriver2 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineFactory.getBasicLine());
+		Job2dDriver testDriver2 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtendedLineFactory.getBasicLine());
 		DriverFeature.addDriver("Basic Line Simulator", testDriver2);
 
-		Job2dDriver testDriver3 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineFactory.getDottedLine());
+		Job2dDriver testDriver3 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtendedLineFactory.getDottedLine());
 		DriverFeature.addDriver("Dotted Line Simulator", testDriver3);
 
-		Job2dDriver testDriver4 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), LineFactory.getSpecialLine());
+		Job2dDriver testDriver4 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtendedLineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line Simulator", testDriver4);
+
+		Job2dDriver testDriver5 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtendedLineFactory.getModifiableLine(Color.BLUE, 4.0f, true));
+		DriverFeature.addDriver("Modifiable Line 1 Simulator", testDriver5);
+
+		Job2dDriver testDriver6 = new LineDrawerAdapter(DrawerFeature.getDrawerController(), ExtendedLineFactory.getModifiableLine(Color.GREEN, 10.0f, false));
+		DriverFeature.addDriver("Modifiable Line 2 Simulator", testDriver6);
 
 		DriverFeature.updateDriverInfo();
 	}
