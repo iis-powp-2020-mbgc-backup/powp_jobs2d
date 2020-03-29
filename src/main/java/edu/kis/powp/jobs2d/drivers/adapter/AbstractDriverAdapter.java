@@ -14,9 +14,9 @@ public class AbstractDriverAdapter extends AbstractDriver {
 
     @Override
     public void operateTo(int x, int y) {
-        setPosition(x, y);
-
         job2dDriver.setPosition(getX(), getY());
         job2dDriver.operateTo(x, y);
+
+        setPosition(x, y);
     }
 }
