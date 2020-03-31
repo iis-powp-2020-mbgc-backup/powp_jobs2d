@@ -9,6 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.command.CommandFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelControllerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -40,8 +41,40 @@ public class TestJobs2dPatterns {
 				}
 		);
 
+		SelectTestFigureOptionListener selectTestFigureOptionListener3 = new SelectTestFigureOptionListener(
+				() -> {
+					CommandFactory.createSquareCommand(DriverFeature.getDriverManager().getCurrentDriver()).execute();
+					return null;
+				}
+		);
+
+		SelectTestFigureOptionListener selectTestFigureOptionListener4 = new SelectTestFigureOptionListener(
+				() -> {
+					CommandFactory.createRectangleCommand(DriverFeature.getDriverManager().getCurrentDriver()).execute();
+					return null;
+				}
+		);
+
+		SelectTestFigureOptionListener selectTestFigureOptionListener5 = new SelectTestFigureOptionListener(
+				() -> {
+					CommandFactory.createPentagonCommand(DriverFeature.getDriverManager().getCurrentDriver()).execute();
+					return null;
+				}
+		);
+
+		SelectTestFigureOptionListener selectTestFigureOptionListener6 = new SelectTestFigureOptionListener(
+				() -> {
+					CommandFactory.createHexagonCommand(DriverFeature.getDriverManager().getCurrentDriver()).execute();
+					return null;
+				}
+		);
+
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		application.addTest("Square", selectTestFigureOptionListener3);
+		application.addTest("Rectangle", selectTestFigureOptionListener4);
+		application.addTest("Pentagon", selectTestFigureOptionListener5);
+		application.addTest("Hexagon", selectTestFigureOptionListener6);
 	}
 
 	/**
