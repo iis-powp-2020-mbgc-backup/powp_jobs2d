@@ -6,13 +6,13 @@ import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 
 /**
- * Drawer test.
+ * Adapter2d test.
  * 
  * @author Dominik
  */
 public class TestDrawer {
 	/**
-	 * Drawer test.
+	 * Adapter2d test.
 	 */
 	public static void main(String[] args) {
 		DrawPanelController controller = new DrawPanelController();

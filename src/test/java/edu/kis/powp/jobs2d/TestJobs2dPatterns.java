@@ -1,18 +1,20 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.Drawer;
+import edu.kis.powp.jobs2d.drivers.adapter.Adapter2d;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -27,6 +29,7 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 	}
 
 	/**
@@ -38,9 +41,16 @@ public class TestJobs2dPatterns {
 		Job2dDriver loggerDriver = new LoggerDriver();
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
+		Job2dDriver testDriver = new Adapter2d();
+		//
+		DriverFeature.addDriver("Dotted Simulator", testDriver);
+		Job2dDriver lineTestDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
+		DriverFeature.addDriver("Dotted Drawer Driver",lineTestDriver);
 
-		Job2dDriver testDriver = new Drawer();
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		DriverFeature.addDriver("Line Simulator", testDriver);
+		Job2dDriver lineTestDriver2 = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Dotted Drawer Driver",lineTestDriver2);
+
 
 		DriverFeature.updateDriverInfo();
 	}
@@ -52,7 +62,7 @@ public class TestJobs2dPatterns {
 	 */
 	private static void setupDefaultDrawerVisibilityManagement(Application application) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
+		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Adapter2d Visibility",
 				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
 		defaultDrawerWindow.setVisible(true);
 	}
