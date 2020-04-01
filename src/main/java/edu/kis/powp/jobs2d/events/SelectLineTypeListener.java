@@ -3,7 +3,7 @@ package edu.kis.powp.jobs2d.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineDrawerAdapter;
 
 public class SelectLineTypeListener implements ActionListener{
 	
@@ -13,17 +13,17 @@ public class SelectLineTypeListener implements ActionListener{
 		{
 			case "Basic line":
 			{
-				LineDrawerAdapter.setLineType(LineDrawerAdapter.LineType.BASIC_LINE);
+				SpecialLineDrawerAdapter.setLineType(SpecialLineDrawerAdapter.LineType.BASIC_LINE);
 				break;
 			}
 			case "Dotted line":
 			{
-				LineDrawerAdapter.setLineType(LineDrawerAdapter.LineType.DOTTED_LINE);
+				SpecialLineDrawerAdapter.setLineType(SpecialLineDrawerAdapter.LineType.DOTTED_LINE);
 				break;
 			}
 			case "Special line":
 			{
-				LineDrawerAdapter.setLineType(LineDrawerAdapter.LineType.SPECIAL_LINE);
+				SpecialLineDrawerAdapter.setLineType(SpecialLineDrawerAdapter.LineType.SPECIAL_LINE);
 				break;
 			}
 		}
