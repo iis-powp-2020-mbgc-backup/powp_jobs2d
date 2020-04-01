@@ -1,16 +1,41 @@
 package edu.kis.powp.jobs2d.drivers.adapter;
 
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.ILine;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
+import edu.kis.powp.jobs2d.features.DrawerFeature;
 
 public class LineDrawerAdapter extends DrawPanelController implements Job2dDriver {
-    @Override
-    public void setPosition(int i, int i1) {
+    ILine selectedLineType;
 
+    private int startX = 0, startY = 0;
+    private DrawPanelController drawPanelController = DrawerFeature.getDrawerController();
+
+    LineDrawerAdapter() {
+        super();
+        setSelectedLineType(LineFactory.getBasicLine());
+    }
+
+    LineDrawerAdapter(ILine lineType) {
+        super();
+        setSelectedLineType(lineType);
     }
 
     @Override
-    public void operateTo(int i, int i1) {
+    public void setPosition(int x, int y) {
+        this.startX = x;
+        this.startY = y;
+    }
 
+    @Override
+    public void operateTo(int x, int y) {
+        selectedLineType.setStartCoordinates(this.startX, this.startY);
+        selectedLineType.setEndCoordinates(x, y);
+        setPosition(x, y);
+    }
+
+    public void setSelectedLineType(ILine selectedLineType) {
+        this.selectedLineType = selectedLineType;
     }
 }
