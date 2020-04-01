@@ -10,9 +10,20 @@ public class LineDrawerAdapter extends DrawerFeature implements Job2dDriver {
     private int startX = 0, startY = 0;
     private ILine line;
 
-    public LineDrawerAdapter() {
+    public LineDrawerAdapter(LineType lineType) {
         super();
-        this.line = LineFactory.getDottedLine();
+
+        switch(lineType){
+            case BASIC:
+                this.line = LineFactory.getBasicLine();
+                break;
+            case DOTTED:
+                this.line = LineFactory.getDottedLine();
+                break;
+            case SPECIAL:
+                this.line = LineFactory.getSpecialLine();
+                break;
+        }
     }
 
 
