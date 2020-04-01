@@ -9,6 +9,7 @@ public class SpecialLineDrawerAdapter implements Job2dDriver{
 	private DrawPanelController drawPanelController;
 	private int startX = 0, startY = 0;
 	public static LineType lineType = LineType.BASIC_LINE;
+	private ILine line = null;
 	
 	public enum LineType {
 		BASIC_LINE,
@@ -29,7 +30,18 @@ public class SpecialLineDrawerAdapter implements Job2dDriver{
 
 	@Override
 	public void operateTo(int x, int y) {
-		ILine line = null;
+		setLine(lineType);
+		line.setStartCoordinates(this.startX, this.startY);
+		line.setEndCoordinates(x, y);
+		setPosition(x, y);
+		drawPanelController.drawLine(line);
+	}
+	
+	public static void setLineType(LineType lineType) {
+		SpecialLineDrawerAdapter.lineType = lineType;
+	}
+	
+	public void setLine(LineType lineType) {
 		switch(lineType)
 		{
 			case BASIC_LINE:
@@ -48,14 +60,6 @@ public class SpecialLineDrawerAdapter implements Job2dDriver{
 				break;
 			}
 		}
-		line.setStartCoordinates(this.startX, this.startY);
-		line.setEndCoordinates(x, y);
-		setPosition(x, y);
-		drawPanelController.drawLine(line);
-	}
-	
-	public static void setLineType(LineType lineType) {
-		SpecialLineDrawerAdapter.lineType = lineType;
 	}
 	
 	@Override
