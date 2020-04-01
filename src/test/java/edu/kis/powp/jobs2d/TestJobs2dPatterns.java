@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d;
 
+import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener2;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
@@ -25,9 +26,13 @@ public class TestJobs2dPatterns {
 	private static void setupPresetTests(Application application) {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener2 selectTestFigureOptionListener2 = new SelectTestFigureOptionListener2(
+				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
 	}
+
 
 	/**
 	 * Setup driver manager, and set default driver for application.
