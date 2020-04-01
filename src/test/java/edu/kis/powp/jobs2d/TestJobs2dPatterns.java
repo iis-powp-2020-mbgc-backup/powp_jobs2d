@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d;
 
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapterImplementation;
 import edu.kis.powp.jobs2d.events.SelectTestFigureJoe2OptionListener;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -46,6 +47,7 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver testDriver = new DrawAdapterImplementation();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
+
 
 		DriverFeature.updateDriverInfo();
 	}
