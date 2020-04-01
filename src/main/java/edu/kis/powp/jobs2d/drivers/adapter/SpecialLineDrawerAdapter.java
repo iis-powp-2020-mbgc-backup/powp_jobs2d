@@ -4,7 +4,6 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
-import edu.kis.powp.jobs2d.features.DrawerFeature;
 
 public class SpecialLineDrawerAdapter implements Job2dDriver{
 	private DrawPanelController drawPanelController;
@@ -17,9 +16,9 @@ public class SpecialLineDrawerAdapter implements Job2dDriver{
 		SPECIAL_LINE
 	}
 
-	public SpecialLineDrawerAdapter() {
+	public SpecialLineDrawerAdapter(DrawPanelController drawPanelController) {
 		super();
-		drawPanelController = DrawerFeature.getDrawerController();
+		this.drawPanelController = drawPanelController;
 	}
 
 	@Override
