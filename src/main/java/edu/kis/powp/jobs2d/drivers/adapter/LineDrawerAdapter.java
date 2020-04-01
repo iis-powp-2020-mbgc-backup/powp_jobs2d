@@ -40,4 +40,9 @@ public class LineDrawerAdapter extends DrawPanelController implements Job2dDrive
     public void setSelectedLineType(ILine selectedLineType) {
         this.selectedLineType = selectedLineType;
     }
+
+    @Override
+    public String toString() {
+        return "LineDrawerAdapter";
+    }
 }
