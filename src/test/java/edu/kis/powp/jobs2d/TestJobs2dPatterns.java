@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d;
 
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapterImplementation;
 import edu.kis.powp.jobs2d.events.SelectTestFigureJoe2OptionListener;
 import java.awt.EventQueue;
@@ -47,6 +48,13 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver testDriver = new DrawAdapterImplementation();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
+
+		Job2dDriver basicLineDriver = new LineDrawerAdapterImplementation(LineFactory.getBasicLine());
+		DriverFeature.addDriver("Basic Line", basicLineDriver);
+		Job2dDriver specialLineDriver = new LineDrawerAdapterImplementation(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Special Line", specialLineDriver);
+		Job2dDriver dottedLineDriver = new LineDrawerAdapterImplementation(LineFactory.getDottedLine());
+		DriverFeature.addDriver("Dotted Line", dottedLineDriver);
 
 
 		DriverFeature.updateDriverInfo();
