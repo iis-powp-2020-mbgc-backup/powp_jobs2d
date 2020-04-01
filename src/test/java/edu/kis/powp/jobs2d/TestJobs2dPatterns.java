@@ -15,6 +15,7 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 
 public class TestJobs2dPatterns {
+
     private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
@@ -45,17 +46,17 @@ public class TestJobs2dPatterns {
         DriverFeature.updateDriverInfo();
     }
 
-    /**
-     * Auxiliary routines to enable using Buggy Simulator.
-     *
-     * @param application Application context.
-     */
-    private static void setupDefaultDrawerVisibilityManagement(Application application) {
-        DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-        application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-                new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-        defaultDrawerWindow.setVisible(true);
-    }
+    //	/**
+    //	 * Auxiliary routines to enable using Buggy Simulator.
+    //	 *
+    //	 * @param application Application context.
+    //	 */
+    //	private static void setupDefaultDrawerVisibilityManagement(Application application) {
+    //		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
+    //		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
+    //				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
+    //		defaultDrawerWindow.setVisible(true);
+    //	}
 
     /**
      * Setup menu for adjusting logging settings.
@@ -64,14 +65,11 @@ public class TestJobs2dPatterns {
      */
     private static void setupLogger(Application application) {
         application.addComponentMenu(Logger.class, "Logger", 0);
-        application.addComponentMenuElement(Logger.class, "Clear log",
-                (ActionEvent e) -> application.flushLoggerOutput());
+        application.addComponentMenuElement(Logger.class, "Clear log", (ActionEvent e) -> application.flushLoggerOutput());
         application.addComponentMenuElement(Logger.class, "Fine level", (ActionEvent e) -> logger.setLevel(Level.FINE));
         application.addComponentMenuElement(Logger.class, "Info level", (ActionEvent e) -> logger.setLevel(Level.INFO));
-        application.addComponentMenuElement(Logger.class, "Warning level",
-                (ActionEvent e) -> logger.setLevel(Level.WARNING));
-        application.addComponentMenuElement(Logger.class, "Severe level",
-                (ActionEvent e) -> logger.setLevel(Level.SEVERE));
+        application.addComponentMenuElement(Logger.class, "Warning level", (ActionEvent e) -> logger.setLevel(Level.WARNING));
+        application.addComponentMenuElement(Logger.class, "Severe level", (ActionEvent e) -> logger.setLevel(Level.SEVERE));
         application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
     }
 
@@ -83,7 +81,7 @@ public class TestJobs2dPatterns {
             public void run() {
                 Application app = new Application("2d jobs Visio");
                 DrawerFeature.setupDrawerPlugin(app);
-                setupDefaultDrawerVisibilityManagement(app);
+                //setupDefaultDrawerVisibilityManagement(app);
 
                 DriverFeature.setupDriverPlugin(app);
                 setupDrivers(app);
@@ -94,5 +92,4 @@ public class TestJobs2dPatterns {
             }
         });
     }
-
 }
