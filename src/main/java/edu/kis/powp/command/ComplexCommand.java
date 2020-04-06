@@ -1,5 +1,6 @@
 package edu.kis.powp.command;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,10 +24,10 @@ public class ComplexCommand implements IDriverCommand {
     }
 
     public static final class Builder {
-        private List<IDriverCommand> queue;
+        private ArrayList<IDriverCommand> queue;
 
         private Builder() {
-            queue = Collections.emptyList();
+            queue = new ArrayList<>();
         }
 
         public Builder addCommand(IDriverCommand command) {

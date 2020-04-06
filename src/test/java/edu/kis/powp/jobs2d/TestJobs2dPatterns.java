@@ -6,11 +6,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.TestLineDrawerAdapter;
-import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.events.CommandExamples;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -21,11 +23,13 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
+		DriverManager driverFeature = DriverFeature.getDriverManager();
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", (actionEvent) -> FiguresJoe.figureScript1(driverFeature.getCurrentDriver()));
+		application.addTest("Figure Joe 2", (actionEvent) -> FiguresJoe.figureScript2(driverFeature.getCurrentDriver()));
+
+		application.addTest("Figure Joe 1 Command", (actionEvent) -> CommandExamples.script1(driverFeature.getCurrentDriver()).execute());
+		application.addTest("Figure Joe 1 Command", (actionEvent) -> CommandExamples.script2(driverFeature.getCurrentDriver()).execute());
 	}
 
 	/**
@@ -69,8 +73,8 @@ public class TestJobs2dPatterns {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+		EventQueue.invokeLater(() -> {
+			{
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
 
