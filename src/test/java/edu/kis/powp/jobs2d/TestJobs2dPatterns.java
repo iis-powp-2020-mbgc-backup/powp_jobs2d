@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.MyFigures;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -28,6 +29,12 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane 1", selectTestFigureOptionListener);
+		application.addTest("Rectangle", (actionEvent) -> {
+			MyFigures.Rectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute();
+		});
+		application.addTest("Triangle", (actionEvent) -> {
+			MyFigures.Triangle(DriverFeature.getDriverManager().getCurrentDriver()).execute();
+		});
 	}
 
 	/**
@@ -48,8 +55,6 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver testDrive3 = new LineDrawerAdapter(LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line Simulator", testDrive3);
-
-
 
 		DriverFeature.updateDriverInfo();
 	}
