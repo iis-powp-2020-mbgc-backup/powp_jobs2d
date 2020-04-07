@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CommandExamples {
 
-    public static IDriverCommand script1(Job2dDriver driver) {
+    public static IDriverCommand scriptFigure1(Job2dDriver driver) {
 
         ComplexCommand.Builder builder = ComplexCommand.builder();
 
@@ -33,7 +33,7 @@ public class CommandExamples {
         return builder.build();
     }
 
-    public static IDriverCommand script2(Job2dDriver driver) {
+    public static IDriverCommand scriptFigure2(Job2dDriver driver) {
 
         ComplexCommand.Builder builder = ComplexCommand.builder();
 
@@ -46,6 +46,41 @@ public class CommandExamples {
                 new OperateToCommand(-33, 44, driver),
                 new SetPositionCommand(-66, -88, driver),
                 new OperateToCommand(-128, 256, driver)
+        );
+
+        for (IDriverCommand command : temp) {
+            builder = builder.addCommand(command);
+        }
+
+        return builder.build();
+    }
+
+    public static IDriverCommand rectangle(Job2dDriver driver) {
+        ComplexCommand.Builder builder = ComplexCommand.builder();
+
+        List<IDriverCommand> temp = Arrays.asList(
+                new SetPositionCommand(0, 0, driver),
+                new OperateToCommand(0, 120, driver),
+                new OperateToCommand(120, 0, driver),
+                new OperateToCommand(120, 120, driver),
+                new OperateToCommand(0, 0, driver)
+                );
+
+        for (IDriverCommand command : temp) {
+            builder = builder.addCommand(command);
+        }
+
+        return builder.build();
+    }
+
+    public static IDriverCommand triangle(Job2dDriver driver) {
+        ComplexCommand.Builder builder = ComplexCommand.builder();
+
+        List<IDriverCommand> temp = Arrays.asList(
+                new SetPositionCommand(0, 0, driver),
+                new OperateToCommand(60, 0, driver),
+                new OperateToCommand(0, 60, driver),
+                new OperateToCommand(60, 60, driver)
         );
 
         for (IDriverCommand command : temp) {

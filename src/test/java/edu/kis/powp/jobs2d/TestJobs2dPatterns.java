@@ -28,8 +28,11 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", (actionEvent) -> FiguresJoe.figureScript1(driverFeature.getCurrentDriver()));
 		application.addTest("Figure Joe 2", (actionEvent) -> FiguresJoe.figureScript2(driverFeature.getCurrentDriver()));
 
-		application.addTest("Figure Joe 1 Command", (actionEvent) -> CommandExamples.script1(driverFeature.getCurrentDriver()).execute());
-		application.addTest("Figure Joe 1 Command", (actionEvent) -> CommandExamples.script2(driverFeature.getCurrentDriver()).execute());
+		application.addTest("Figure Joe 1 Command", (actionEvent) -> CommandExamples.scriptFigure1(driverFeature.getCurrentDriver()).execute());
+		application.addTest("Figure Joe 1 Command", (actionEvent) -> CommandExamples.scriptFigure2(driverFeature.getCurrentDriver()).execute());
+
+		application.addTest("hourglass", (actionEvent) -> CommandExamples.rectangle(driverFeature.getCurrentDriver()).execute());
+		application.addTest("Enka", (actionEvent) -> CommandExamples.triangle(driverFeature.getCurrentDriver()).execute());
 	}
 
 	/**
