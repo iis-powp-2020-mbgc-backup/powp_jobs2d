@@ -8,6 +8,7 @@ public class SetPositionCommand implements DriverCommand {
     private final int x;
     private Job2dDriver currentDriver = null;
 
+    @Override
     public void setDriver(Job2dDriver driver) {
         currentDriver = driver;
     }
