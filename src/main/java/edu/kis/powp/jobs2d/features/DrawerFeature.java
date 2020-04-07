@@ -9,7 +9,7 @@ public class DrawerFeature {
 	private static DrawPanelController drawerController;
 
 	/**
-	 * Setup Adapter2d Plugin and add to application.
+	 * Setup Pane2dDrawerAdapter Plugin and add to application.
 	 * 
 	 * @param application Application context.
 	 */

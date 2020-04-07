@@ -4,7 +4,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.Adapter2d;
+import edu.kis.powp.jobs2d.drivers.adapter.Pane2dDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -42,7 +42,7 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new Adapter2d();
+		Job2dDriver testDriver = new Pane2dDrawerAdapter();
 		DriverFeature.addDriver("Line Simulator", testDriver);
 
 		Job2dDriver lineTestDriver = new LineDrawerAdapter(LineFactory.getBasicLine());
@@ -66,7 +66,7 @@ public class TestJobs2dPatterns {
 	 */
 	private static void setupDefaultDrawerVisibilityManagement(Application application) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Adapter2d Visibility",
+		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Pane2dDrawerAdapter Visibility",
 				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
 		defaultDrawerWindow.setVisible(true);
 	}
