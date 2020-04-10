@@ -11,8 +11,9 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.job2d.custom.CustomLine;
+import edu.kis.powp.jobs2d.drivers.adapter.JaneFiguresAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
-import edu.kis.powp.jobs2d.events.FigureJoe;
+import edu.kis.powp.jobs2d.events.Figure;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -29,13 +30,17 @@ public class TestJobs2dPatterns {
      */
     private static void setupPresetTests(Application application) {
         SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener(
-                DriverFeature.getDriverManager(), FigureJoe.FIGURE_1);
+                DriverFeature.getDriverManager(), Figure.FIGURE_JOE_1);
 
         SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(
-                DriverFeature.getDriverManager(), FigureJoe.FIGURE_2);
+                DriverFeature.getDriverManager(), Figure.FIGURE_JOE_2);
+
+        SelectTestFigureOptionListener selectTestFigureOptionListener3 = new SelectTestFigureOptionListener(
+                DriverFeature.getDriverManager(), Figure.FIGURE_JANE_1);
 
         application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
         application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+        application.addTest("Figure Jane 1", selectTestFigureOptionListener3);
     }
 
     /**
@@ -64,6 +69,10 @@ public class TestJobs2dPatterns {
         DriverFeature.addDriver("Special Line", specialLineDriver);
         DriverFeature.addDriver("Red dotted line", customRedDotted);
         DriverFeature.addDriver("Red solid Line", customRedSolid);
+
+        Job2dDriver janeTestDriver = new JaneFiguresAdapter(0, 0, DrawerFeature.getDrawerController(),
+                new CustomLine(Color.blue, 1, false));
+        DriverFeature.addDriver("Jane figure", janeTestDriver);
 
         DriverFeature.updateDriverInfo();
     }
