@@ -49,27 +49,27 @@ public class TestJobs2dPatterns {
 		IModifiableLine basicThinLine = new ModifiableLineAdapter();
 		basicThinLine.setColor(Color.RED);
 		basicThinLine.setThickness(1);
-		Job2dDriver basicThinLineDriver = new LineDrawerAdapter(basicThinLine);
+		Job2dDriver basicThinLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(), basicThinLine);
 		DriverFeature.addDriver("Basic Thin Red Simulator", basicThinLineDriver);
 
 		IModifiableLine basicThickLine = new ModifiableLineAdapter();
 		basicThickLine.setColor(Color.BLUE);
 		basicThickLine.setThickness(5);
-		Job2dDriver basicThickLineDriver = new LineDrawerAdapter(basicThickLine);
+		Job2dDriver basicThickLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(), basicThickLine);
 		DriverFeature.addDriver("Basic Thick Blue Simulator", basicThickLineDriver);
 
 		IModifiableLine dottedThinLine = new ModifiableLineAdapter();
 		dottedThinLine.setColor(Color.YELLOW);
 		dottedThinLine.setThickness(1);
 		dottedThinLine.setDotted(true);
-		Job2dDriver dottedThinLineDriver = new LineDrawerAdapter(dottedThinLine);
+		Job2dDriver dottedThinLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(), dottedThinLine);
 		DriverFeature.addDriver("Dotted Thin Yellow Simulator", dottedThinLineDriver);
 
 		IModifiableLine dottedThickLine = new ModifiableLineAdapter();
 		dottedThickLine.setColor(Color.GREEN);
 		dottedThickLine.setThickness(5);
 		dottedThickLine.setDotted(true);
-		Job2dDriver dottedThickLineDriver = new LineDrawerAdapter(dottedThickLine);
+		Job2dDriver dottedThickLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(), dottedThickLine);
 		DriverFeature.addDriver("Dotted Thick Green Simulator", dottedThickLineDriver);
 
 		DriverFeature.updateDriverInfo();

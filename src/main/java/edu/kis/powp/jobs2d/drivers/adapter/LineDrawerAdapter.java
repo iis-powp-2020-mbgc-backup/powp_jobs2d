@@ -13,13 +13,10 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 public class LineDrawerAdapter extends DrawPanelController implements Job2dDriver {
 	private int startX = 0, startY = 0;
 	private IModifiableLine line;
+	private DrawPanelController drawPanelController;
 
-	public LineDrawerAdapter() {
-		super();
-		line = new ModifiableLineAdapter();
-	}
-
-	public LineDrawerAdapter(IModifiableLine line) {
+	public LineDrawerAdapter(DrawPanelController drawPanelController, IModifiableLine line) {
+		this.drawPanelController = drawPanelController;
 		this.line = line;
 	}
 
@@ -35,7 +32,7 @@ public class LineDrawerAdapter extends DrawPanelController implements Job2dDrive
 		line.setEndCoordinates(x, y);
 		setPosition(x, y);
 
-		DrawerFeature.getDrawerController().drawLine(line);
+		drawPanelController.drawLine(line);
 	}
 
 	@Override
