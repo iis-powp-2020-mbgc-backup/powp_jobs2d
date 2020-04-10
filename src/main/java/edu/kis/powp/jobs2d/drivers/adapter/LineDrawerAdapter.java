@@ -33,8 +33,7 @@ public class LineDrawerAdapter extends DrawPanelController implements Job2dDrive
 	public void operateTo(int x, int y) {
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
-		this.startX = x;
-		this.startY = y;
+		setPosition(x, y);
 
 		DrawerFeature.getDrawerController().drawLine(line);
 	}
