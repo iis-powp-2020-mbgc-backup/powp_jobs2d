@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
@@ -9,6 +10,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.job2d.custom.CustomLine;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.FigureJoe;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -52,10 +54,16 @@ public class TestJobs2dPatterns {
                 LineFactory.getDottedLine());
         LineDrawerAdapter specialLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(),
                 LineFactory.getSpecialLine());
+        LineDrawerAdapter customRedDotted = new LineDrawerAdapter(DrawerFeature.getDrawerController(),
+                new CustomLine(Color.red, 1, true));
+        LineDrawerAdapter customRedSolid = new LineDrawerAdapter(DrawerFeature.getDrawerController(),
+                new CustomLine(Color.red, 1, false));
 
         DriverFeature.addDriver("Basic Line", basicLineDriver);
         DriverFeature.addDriver("Dotted Line", dottedLineDriver);
         DriverFeature.addDriver("Special Line", specialLineDriver);
+        DriverFeature.addDriver("Red dotted line", customRedDotted);
+        DriverFeature.addDriver("Red solid Line", customRedSolid);
 
         DriverFeature.updateDriverInfo();
     }
