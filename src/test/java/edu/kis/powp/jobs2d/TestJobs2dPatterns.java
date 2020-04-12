@@ -2,7 +2,7 @@ package edu.kis.powp.jobs2d;
 
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
-import edu.kis.powp.jobs2d.events.SelectTestFigureJoe2OptionListener;
+import edu.kis.powp.jobs2d.events.TestCase;
 import edu.kis.powp.jobs2d.line.LineFactoryExtended;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
-import edu.kis.powp.jobs2d.events.SelectTestFigureJoe1OptionListener;
+import edu.kis.powp.jobs2d.events.SelectTestFigureJoeOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 
@@ -27,10 +27,10 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureJoe1OptionListener selectFirstTestFigureOptionListener = new SelectTestFigureJoe1OptionListener(
-				DriverFeature.getDriverManager());
-		SelectTestFigureJoe2OptionListener selectTestFigureJoe2OptionListener = new SelectTestFigureJoe2OptionListener(
-				DriverFeature.getDriverManager());
+		SelectTestFigureJoeOptionListener selectFirstTestFigureOptionListener = new SelectTestFigureJoeOptionListener(
+				DriverFeature.getDriverManager(),TestCase.FIGURE_JOE1);
+		SelectTestFigureJoeOptionListener selectTestFigureJoe2OptionListener = new SelectTestFigureJoeOptionListener(
+				DriverFeature.getDriverManager(),TestCase.FIGURE_JOE2);
 
 		application.addTest("Figure Joe 1", selectFirstTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureJoe2OptionListener);
