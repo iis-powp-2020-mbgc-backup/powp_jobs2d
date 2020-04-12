@@ -3,6 +3,7 @@ package edu.kis.powp.jobs2d;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectTestFigureJoe2OptionListener;
+import edu.kis.powp.jobs2d.line.LineFactoryExtended;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
@@ -55,7 +56,8 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Special Line", specialLineDriver);
 		Job2dDriver dottedLineDriver = new LineDrawerAdapter(LineFactory.getDottedLine(),DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Dotted Line", dottedLineDriver);
-
+		Job2dDriver EditableLine = new LineDrawerAdapter(LineFactoryExtended.getEditAbleLine(),DrawerFeature.getDrawerController());
+		DriverFeature.addDriver("Editable Line", EditableLine);
 
 		DriverFeature.updateDriverInfo();
 	}
