@@ -1,7 +1,7 @@
 package edu.kis.powp.jobs2d;
 
 import edu.kis.legacy.drawer.shape.LineFactory;
-import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapterImplementation;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectTestFigureJoe2OptionListener;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.DrawAdapterImplementation;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureJoe1OptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -46,14 +46,14 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new DrawAdapterImplementation();
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		Job2dDriver testDriver = new DrawerAdapter(DrawerFeature.getDrawerController());
+		DriverFeature.addDriver("Draw Simulator", testDriver);
 
-		Job2dDriver basicLineDriver = new LineDrawerAdapterImplementation(LineFactory.getBasicLine());
+		Job2dDriver basicLineDriver = new LineDrawerAdapter(LineFactory.getBasicLine(),DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Basic Line", basicLineDriver);
-		Job2dDriver specialLineDriver = new LineDrawerAdapterImplementation(LineFactory.getSpecialLine());
+		Job2dDriver specialLineDriver = new LineDrawerAdapter(LineFactory.getSpecialLine(),DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Special Line", specialLineDriver);
-		Job2dDriver dottedLineDriver = new LineDrawerAdapterImplementation(LineFactory.getDottedLine());
+		Job2dDriver dottedLineDriver = new LineDrawerAdapter(LineFactory.getDottedLine(),DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Dotted Line", dottedLineDriver);
 
 
