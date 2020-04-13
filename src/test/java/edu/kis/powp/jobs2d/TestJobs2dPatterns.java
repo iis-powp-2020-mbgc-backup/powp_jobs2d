@@ -9,6 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.*;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.Jobs2dToDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -31,6 +32,30 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager(), TestFigureType.FIGURE_JOE_2);
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener1);
+		application.addTest("Triangle", e -> {
+			DriverCommand command = CommandFactory.getTriangleCommand(DriverFeature.getDriverManager().getCurrentDriver());
+			command.execute();
+		});
+		application.addTest("Rectangle", e -> {
+			DriverCommand command = CommandFactory.getRectangleCommand(DriverFeature.getDriverManager().getCurrentDriver());
+			command.execute();
+		});
+
+		application.addTest("Figure Joe 1 alternative (builder)", e -> {
+			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
+			CommandBuilder cb = new CommandBuilder();
+			DriverCommand command = cb.
+					addCommand(new SetPositionCommand(currentDriver, -120, -120)).
+					addCommand(new OperateToCommand(currentDriver, 120, -120)).
+					addCommand(new OperateToCommand(currentDriver, 120, 120)).
+					addCommand(new OperateToCommand(currentDriver, -120, 120)).
+					addCommand(new OperateToCommand(currentDriver, -120, -120)).
+					addCommand(new OperateToCommand(currentDriver, 120, 120)).
+					addCommand(new SetPositionCommand(currentDriver, 120, -120)).
+					addCommand(new OperateToCommand(currentDriver, -120, 120)).
+					create();
+			command.execute();
+		});
 	}
 
 	/**
