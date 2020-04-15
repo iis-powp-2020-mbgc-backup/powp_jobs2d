@@ -9,6 +9,9 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.DriverCommand;
+import edu.kis.powp.command.OperateToCommand;
+import edu.kis.powp.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.drivers.IModifiableLine;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.ModifiableLineAdapter;
@@ -34,6 +37,14 @@ public class TestJobs2dPatterns {
 
 		application.addTest("Figure Joe 1", firstTestFigureOptionListener);
 		application.addTest("Figure Joe 2", secondTestFigureOptionListener);
+		application.addTest("Horizontal line", event ->
+		{
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+			DriverCommand command = new SetPositionCommand(driver, -200,0);
+			command.execute();
+			command = new OperateToCommand(driver, 200,0);
+			command.execute();
+		});
 	}
 
 	/**
