@@ -13,6 +13,7 @@ import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineType;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.factiories.FiguresFactory;
 import edu.kis.powp.jobs2d.factiories.SpecialLineFactory;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
@@ -29,15 +30,15 @@ public class TestJobs2dPatterns {
      */
     private static void setupPresetTests(Application application) {
         SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),
-                FigureToDraw.JOE_FIGURE_1);
+                FiguresFactory.of(FigureToDraw.JOE_FIGURE_1));
 
         application.addTest("Figure Joe 1", selectTestFigureOptionListener);
         SelectTestFigureOptionListener figureJoe2Listener = new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),
-                FigureToDraw.JOE_FIGURE_2);
+                FiguresFactory.of(FigureToDraw.JOE_FIGURE_2));
 
         application.addTest("Figure Joe 2", figureJoe2Listener);
         SelectTestFigureOptionListener figureJaneListener = new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),
-                FigureToDraw.JANE_FIGURE);
+                FiguresFactory.of(FigureToDraw.JANE_FIGURE));
 
         application.addTest("Figure Jane", figureJaneListener);
     }
