@@ -6,12 +6,12 @@ public class ComplexCommand implements DriverCommand
     private ArrayList<DriverCommand> commands;
 
     public ComplexCommand() {
-        commands = new ArrayList<>();
+        this.commands = new ArrayList<>();
     }
 
     @Override
     public void execute() {
-        for (DriverCommand command : commands) {
+        for (DriverCommand command : this.commands) {
             command.execute();
         }
     }
