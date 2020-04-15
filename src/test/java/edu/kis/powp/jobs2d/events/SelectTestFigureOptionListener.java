@@ -33,6 +33,8 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				break;
 			case FIGURE_COMMAND:
 				FigureCommand.figureScript(driverManager.getCurrentDriver());
+			case FIGURE_COMPLEX_COMMAND:
+				FigureCommand.figureScript2(driverManager.getCurrentDriver());
 			default:
 				break;
 		}
