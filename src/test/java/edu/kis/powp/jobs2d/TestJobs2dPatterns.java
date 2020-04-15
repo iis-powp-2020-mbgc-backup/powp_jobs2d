@@ -10,6 +10,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.command.ComplexCommand;
 import edu.kis.powp.jobs2d.drivers.command.DriverCommand;
 import edu.kis.powp.jobs2d.drivers.command.OperateToCommand;
 import edu.kis.powp.jobs2d.drivers.command.SetPositionCommand;
@@ -23,7 +24,7 @@ public class TestJobs2dPatterns {
 
 	/**
 	 * Setup test concerning preset figures in context.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
@@ -33,27 +34,31 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane", selectTestFigureOptionListener);
-		application.addTest("Diamond", e ->
-		{
+		application.addTest("Diamond", e -> {
 			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
-			DriverCommand command = new SetPositionCommand(-200, -100);
-			command.execute(driver);
-			command = new OperateToCommand(-100,-200);
-			command.execute(driver);
-			command = new OperateToCommand(100,-200);
-			command.execute(driver);
-			command = new OperateToCommand(200,-100);
-			command.execute(driver);
-			command = new OperateToCommand(0,100);
-			command.execute(driver);
-			command = new OperateToCommand(-200,-100);
-			command.execute(driver);
+			new SetPositionCommand(-200, -100).execute(driver);
+			new OperateToCommand(-100,-200).execute(driver);
+			new OperateToCommand(100,-200).execute(driver);
+			new OperateToCommand(200,-100).execute(driver);
+			new OperateToCommand(0,100).execute(driver);
+			new OperateToCommand(-200,-100).execute(driver);
 		});
+		application.addTest("Arrow", e -> {
+			ComplexCommand complexCommand = new ComplexCommand();
+			complexCommand.addCommand(new SetPositionCommand(-200, 0));
+			complexCommand.addCommand(new OperateToCommand(100, 0));
+			complexCommand.addCommand(new OperateToCommand(100, 100));
+			complexCommand.addCommand(new OperateToCommand(200, 0));
+			complexCommand.addCommand(new OperateToCommand(100, -100));
+			complexCommand.addCommand(new OperateToCommand(100, 0));
+			complexCommand.execute(DriverFeature.getDriverManager().getCurrentDriver());
+		});
+
 	}
 
 	/**
 	 * Setup driver manager, and set default driver for application.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupDrivers(Application application) {
@@ -75,7 +80,7 @@ public class TestJobs2dPatterns {
 
 	/**
 	 * Auxiliary routines to enable using Buggy Simulator.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupDefaultDrawerVisibilityManagement(Application application) {
@@ -87,7 +92,7 @@ public class TestJobs2dPatterns {
 
 	/**
 	 * Setup menu for adjusting logging settings.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupLogger(Application application) {
