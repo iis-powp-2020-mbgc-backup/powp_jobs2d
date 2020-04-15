@@ -10,6 +10,9 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.command.DriverCommand;
+import edu.kis.powp.jobs2d.drivers.command.OperateToCommand;
+import edu.kis.powp.jobs2d.drivers.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -30,6 +33,22 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane", selectTestFigureOptionListener);
+		application.addTest("Diamond", e ->
+		{
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+			DriverCommand command = new SetPositionCommand(-200, -100);
+			command.execute(driver);
+			command = new OperateToCommand(-100,-200);
+			command.execute(driver);
+			command = new OperateToCommand(100,-200);
+			command.execute(driver);
+			command = new OperateToCommand(200,-100);
+			command.execute(driver);
+			command = new OperateToCommand(0,100);
+			command.execute(driver);
+			command = new OperateToCommand(-200,-100);
+			command.execute(driver);
+		});
 	}
 
 	/**
