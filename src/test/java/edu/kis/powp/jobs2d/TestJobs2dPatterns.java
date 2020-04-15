@@ -10,10 +10,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.command.ComplexCommand;
-import edu.kis.powp.command.DriverCommand;
-import edu.kis.powp.command.OperateToCommand;
-import edu.kis.powp.command.SetPositionCommand;
+import edu.kis.powp.command.*;
 import edu.kis.powp.jobs2d.drivers.IModifiableLine;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.ModifiableLineAdapter;
@@ -47,7 +44,7 @@ public class TestJobs2dPatterns {
 			command = new OperateToCommand(driver, 200,0);
 			command.execute();
 		});
-		application.addTest("V sign", e ->
+		application.addTest("V sign", event ->
 		{
 			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
 			ArrayList<DriverCommand> list = new ArrayList<>();
@@ -58,17 +55,32 @@ public class TestJobs2dPatterns {
 			DriverCommand command = new ComplexCommand(list);
 			command.execute();
 		});
-		application.addTest("Square", e ->
+		application.addTest("Square", event ->
 		{
 			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
 			DriverCommand command = ComplexCommand.getSquareCommand(driver);
 			command.execute();
 		});
-		application.addTest("Triangle", e ->
+		application.addTest("Triangle", event ->
 		{
 			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
 			DriverCommand command = ComplexCommand.getTriangleCommand(driver);
 			command.execute();
+		});
+		application.addTest("Figure Joe 1 using builder", event ->
+		{
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+
+			new BuilderCommand().withCommand(new SetPositionCommand(driver, -120, -120))
+								.withCommand(new OperateToCommand(driver, 120, -120))
+								.withCommand(new OperateToCommand(driver, 120, 120))
+								.withCommand(new OperateToCommand(driver, -120, 120))
+								.withCommand(new OperateToCommand(driver, -120, -120))
+								.withCommand(new OperateToCommand(driver, 120, 120))
+								.withCommand(new SetPositionCommand(driver, 120, -120))
+								.withCommand(new OperateToCommand(driver, -120, 120))
+								.buildCommand()
+								.execute();
 		});
 	}
 
