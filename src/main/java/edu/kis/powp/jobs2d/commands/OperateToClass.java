@@ -3,17 +3,15 @@ package edu.kis.powp.jobs2d.commands;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
 public class OperateToClass implements DriverCommand {
-    private Job2dDriver driver;
     private int x, y;
 
-    public OperateToClass(Job2dDriver driver, int x, int y){
-        this.driver = driver;
+    public OperateToClass(int x, int y){
         this.x = x;
         this.y = y;
     }
 
     @Override
-    public void execute() {
+    public void execute(Job2dDriver driver) {
         driver.operateTo(x, y);
     }
 }
