@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.DrawingType;
-import edu.kis.powp.jobs2d.drawings.FigureTest;
+import edu.kis.powp.jobs2d.drawings.FiguresTest;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.AbstractDriverAdapter;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJane;
@@ -34,7 +34,10 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				FiguresJane.figureScript(new AbstractDriverAdapter(driverManager.getCurrentDriver()));
 				break;
 			case FIGURE_TEST:
-				FigureTest.figureScript(driverManager.getCurrentDriver());
+				FiguresTest.figureScript(driverManager.getCurrentDriver());
+				break;
+			case FIGURE_TEST2:
+				FiguresTest.figureScript(driverManager.getCurrentDriver());
 				break;
 			default:
 				break;
