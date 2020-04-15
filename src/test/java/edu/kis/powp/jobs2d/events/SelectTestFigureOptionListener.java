@@ -37,7 +37,7 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				FiguresTest.figureScript(driverManager.getCurrentDriver());
 				break;
 			case FIGURE_TEST2:
-				FiguresTest.figureScript(driverManager.getCurrentDriver());
+				FiguresTest.figureScript2(driverManager.getCurrentDriver());
 				break;
 			default:
 				break;

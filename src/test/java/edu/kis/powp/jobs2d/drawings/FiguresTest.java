@@ -21,10 +21,9 @@ public class FiguresTest {
     public static void figureScript2(Job2dDriver driver) {
         ComplexCommand commandCascade = new ComplexCommand();
 
-        commandCascade.addCommand(new SetPositionCommand(80, 80));
-        commandCascade.addCommand(new OperateToCommand(80, -80));
-        commandCascade.addCommand(new OperateToCommand(-80, -80));
-        commandCascade.addCommand(new OperateToCommand(-80, 80));
+        commandCascade.addCommand(new SetPositionCommand(0, 80));
+        commandCascade.addCommand(new OperateToCommand(80, 80));
+        commandCascade.addCommand(new OperateToCommand(80, 0));
         commandCascade.addCommand(new OperateToCommand(0, 0));
 
         commandCascade.execute(driver);
