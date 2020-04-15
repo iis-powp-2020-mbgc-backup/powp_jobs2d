@@ -13,7 +13,7 @@ import edu.kis.powp.jobs2d.drivers.adapter.LineType;
 import edu.kis.powp.jobs2d.drivers.adapter.MyAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
-import edu.kis.powp.jobs2d.events.TestType;
+import edu.kis.powp.jobs2d.events.FigureType;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 
@@ -28,10 +28,13 @@ public class TestJobs2dPatterns {
 	private static void setupPresetTests(Application application) {
 
 		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(), TestType.FIGURE_JOE_1));
+				DriverFeature.getDriverManager(), FigureType.FIGURE_JOE_1));
 
 		application.addTest("Figure Jane 1", new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(), TestType.FIGURE_JANE_1));
+				DriverFeature.getDriverManager(), FigureType.FIGURE_JANE_1));
+
+		application.addTest("Driver Commands Test Figure", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.DRIVER_COMMANDS_TEST_FIGURE));
 	}
 
 	/**
