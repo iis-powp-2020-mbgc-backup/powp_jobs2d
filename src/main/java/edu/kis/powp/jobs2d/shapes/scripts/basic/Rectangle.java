@@ -49,7 +49,7 @@ public class Rectangle implements Shape{
         return new RectangleBuilder();
     }
 
-    public final static class RectangleBuilder{
+    public final static class RectangleBuilder implements ShapeBuilder{
 
         private int width = DEFAULT_WIDTH;
         private int height = DEFAULT_HEIGHT;
@@ -72,6 +72,7 @@ public class Rectangle implements Shape{
             return this;
         }
 
+        @Override
         public Rectangle build(){
             return new Rectangle(this);
         }

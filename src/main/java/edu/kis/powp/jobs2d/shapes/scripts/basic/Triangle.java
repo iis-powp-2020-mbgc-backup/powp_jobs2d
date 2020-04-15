@@ -58,7 +58,7 @@ public class Triangle implements Shape {
         return new TriangleBuilder();
     }
 
-    public final static class TriangleBuilder {
+    public final static class TriangleBuilder implements ShapeBuilder{
 
         private Point a = Point.ZERO;
         private Point b = Point.X_UNIT;
@@ -79,6 +79,7 @@ public class Triangle implements Shape {
             return this;
         }
 
+        @Override
         public Triangle build() {
             return new Triangle(this);
         }

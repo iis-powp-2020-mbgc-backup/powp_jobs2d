@@ -56,19 +56,19 @@ public class CircularPolygon implements Shape {
     private ArrayList<Point> computeVertices() {
         ArrayList<Point> outputList = new ArrayList<>();
 
-        outputList.add(new Point(radius, 0));
-        outputList.add(new Point(-radius, 0));
-        outputList.add(new Point(0, radius));
-        outputList.add(new Point(0, -radius));
+        outputList.add(new Point(radius + center.getX(), center.getY()));
+        outputList.add(new Point(-radius + center.getX(), center.getY()));
+        outputList.add(new Point(center.getX(), radius + center.getY()));
+        outputList.add(new Point(center.getX(), -radius + center.getY()));
 
         for(int x = 1; x < radius; ++x){
             int ySq = radius * radius - x*x;
             int y = (int)Math.sqrt(ySq);
             if(y*y == ySq){
-                outputList.add(new Point(x, y));
-                outputList.add(new Point(x, -y));
-                outputList.add(new Point(-x, y));
-                outputList.add(new Point(-x, -y));
+                outputList.add(new Point(x + center.getX(), y + center.getY()));
+                outputList.add(new Point(x + center.getX(), -y + center.getY()));
+                outputList.add(new Point(-x + center.getX(), y + center.getY()));
+                outputList.add(new Point(-x + center.getX(), -y + center.getY()));
             }
         }
 
@@ -78,7 +78,11 @@ public class CircularPolygon implements Shape {
 
     }
 
-    public final static class CircularPolygonBuilder{
+    public static CircularPolygonBuilder builder(){
+        return new CircularPolygonBuilder();
+    }
+
+    public final static class CircularPolygonBuilder implements ShapeBuilder{
         private int radius;
         private Point center;
 
@@ -96,6 +100,11 @@ public class CircularPolygon implements Shape {
             return this;
         }
 
+        @Override
+        public CircularPolygon build(){
+            return new CircularPolygon(this);
+        }
+
     }
 
     private static int computeQuadrant(Point center, Point p){
@@ -110,9 +119,9 @@ public class CircularPolygon implements Shape {
         int qa = computeQuadrant(center, a);
         int qb = computeQuadrant(center, b);
         if (qa == qb) {
-            return (b.getX() - center.getX()) * (a.getY() - center.getY()) - (b.getY() - center.getY()) * (a.getX() - center.getX());
+            return (b.getY() - center.getY()) * (a.getX() - center.getX()) - (b.getX() - center.getX()) * (a.getY() - center.getY());
         } else {
-            return qa - qb;
+            return qb - qa;
         }
     }
 }
