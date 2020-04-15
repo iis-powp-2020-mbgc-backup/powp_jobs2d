@@ -9,6 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.ComplexCommand;
 import edu.kis.powp.command.DriverCommand;
 import edu.kis.powp.command.OperateToCommand;
 import edu.kis.powp.command.SetPositionCommand;
@@ -44,6 +45,15 @@ public class TestJobs2dPatterns {
 			command.execute();
 			command = new OperateToCommand(driver, 200,0);
 			command.execute();
+		});
+		application.addTest("V sign", e ->
+		{
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+			ComplexCommand complexCommand = new ComplexCommand();
+			complexCommand.add(new SetPositionCommand(driver, -200,-200));
+			complexCommand.add(new OperateToCommand(driver, 0,200));
+			complexCommand.add(new OperateToCommand(driver, 200, -200));
+			complexCommand.execute();
 		});
 	}
 
