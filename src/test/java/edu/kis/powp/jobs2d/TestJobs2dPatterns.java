@@ -2,6 +2,7 @@ package edu.kis.powp.jobs2d;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,11 +50,25 @@ public class TestJobs2dPatterns {
 		application.addTest("V sign", e ->
 		{
 			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
-			ComplexCommand complexCommand = new ComplexCommand();
-			complexCommand.add(new SetPositionCommand(driver, -200,-200));
-			complexCommand.add(new OperateToCommand(driver, 0,200));
-			complexCommand.add(new OperateToCommand(driver, 200, -200));
-			complexCommand.execute();
+			ArrayList<DriverCommand> list = new ArrayList<>();
+			list.add(new SetPositionCommand(driver, -200,-200));
+			list.add(new OperateToCommand(driver, 0,200));
+			list.add(new OperateToCommand(driver, 200, -200));
+
+			DriverCommand command = new ComplexCommand(list);
+			command.execute();
+		});
+		application.addTest("Square", e ->
+		{
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+			DriverCommand command = ComplexCommand.getSquareCommand(driver);
+			command.execute();
+		});
+		application.addTest("Triangle", e ->
+		{
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+			DriverCommand command = ComplexCommand.getTriangleCommand(driver);
+			command.execute();
 		});
 	}
 
