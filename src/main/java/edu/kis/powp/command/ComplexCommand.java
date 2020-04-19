@@ -1,11 +1,12 @@
 package edu.kis.powp.command;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
 
-    private List<DriverCommand> queue;
+    private ArrayList<DriverCommand> queue;
 
     @Override
     public void execute() {
@@ -14,8 +15,8 @@ public class ComplexCommand implements DriverCommand {
         }
     }
 
-    private ComplexCommand(Builder builder) {
-        this.queue = builder.queue;
+    public ComplexCommand(ArrayList<DriverCommand> builder) {
+        this.queue =  builder;
     }
 
     public static Builder builder() {
@@ -36,8 +37,8 @@ public class ComplexCommand implements DriverCommand {
             return this;
         }
 
-        public ComplexCommand build() {
-            return new ComplexCommand(this);
-        }
+//        public ComplexCommand build() {
+//            return new ComplexCommand(this);
+//        }
     }
 }
