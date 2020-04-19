@@ -39,6 +39,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			case DIAMOND:
 				CommandFactory.getDiamondCommand(driverManager.getCurrentDriver()).execute();
 				break;
+			case CIRCLE:
+				CommandFactory.getCircleCommand(driverManager.getCurrentDriver()).execute();
+				break;
 			default:
 				break;
 		}

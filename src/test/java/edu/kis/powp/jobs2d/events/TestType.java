@@ -5,5 +5,6 @@ public enum TestType {
     RANDOM,
     RECTANGLE,
     DIAMOND,
+    CIRCLE
 
 }
