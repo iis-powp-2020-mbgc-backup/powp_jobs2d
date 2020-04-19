@@ -1,12 +1,13 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.FiguresFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.MyDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -27,6 +28,9 @@ public class TestJobs2dPatterns {
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Square", actionEvent -> FiguresFactory.Square(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Triangle", actionEvent -> FiguresFactory.Triangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Rectangle", actionEvent -> FiguresFactory.Rectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
 	}
 
 	/**
