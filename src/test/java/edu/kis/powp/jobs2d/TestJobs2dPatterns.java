@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.MyFactoryFigure;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.MyDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -29,7 +30,8 @@ public class TestJobs2dPatterns {
 
         application.addTest("Figure Joe 1", selectTestFigureOptionListener);
         application.addTest("Figure Joe 2", selectTestFigureOptionListener);
-
+        application.addTest("Figure Rectangle", actionEvent ->MyFactoryFigure.Rectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+        application.addTest("Figure Triangle", actionEvent ->MyFactoryFigure.Triangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
     }
 
     /**
