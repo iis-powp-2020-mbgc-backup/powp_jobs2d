@@ -4,19 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.drivers.command.CommandFactory;
+import edu.kis.powp.jobs2d.drivers.command.ComplexCommandBuilder;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
 	private DriverManager driverManager;
-	private int testType;
+	private TestType testType;
 
 	public SelectTestFigureOptionListener(DriverManager driverManager) {
 		this.driverManager = driverManager;
-		this.testType = 1;
+		this.testType = TestType.BOX;
 	}
 
-	public SelectTestFigureOptionListener(DriverManager driverManager, int testType) {
+	public SelectTestFigureOptionListener(DriverManager driverManager, TestType testType) {
 		this.driverManager = driverManager;
 		this.testType = testType;
 	}
@@ -25,18 +27,24 @@ public class SelectTestFigureOptionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		switch(testType){
-			case 1:
+			case BOX:
 				FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 				break;
-			case 2:
+			case RANDOM:
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+				break;
+			case RECTANGLE:
+				CommandFactory.getRectangleCommand(driverManager.getCurrentDriver()).execute();
+				break;
+			case DIAMOND:
+				CommandFactory.getDiamondCommand(driverManager.getCurrentDriver()).execute();
 				break;
 			default:
 				break;
 		}
 	}
 
-	public static SelectTestFigureOptionListener getTest(DriverManager driverManager, int testType){
+	public static SelectTestFigureOptionListener getTest(DriverManager driverManager, TestType testType){
 		return new SelectTestFigureOptionListener(driverManager, testType);
 	}
 
