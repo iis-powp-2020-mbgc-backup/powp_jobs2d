@@ -37,6 +37,6 @@ public class Jobs2dMagicToDrawerAdapter implements Job2dDriver {
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Draw Line Simulator";
 	}
 }

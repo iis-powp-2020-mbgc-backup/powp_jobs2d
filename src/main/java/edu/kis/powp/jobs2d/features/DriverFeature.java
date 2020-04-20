@@ -10,6 +10,10 @@ public class DriverFeature {
 	private static DriverManager driverManager = new DriverManager();
 	private static Application app;
 
+	public enum Feature {
+		JOE_1, JOE_2
+	}
+
 	public static DriverManager getDriverManager() {
 		return driverManager;
 	}

@@ -10,6 +10,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.command.TestFigures;
 import edu.kis.powp.jobs2d.drivers.adapter.Jobs2dMagicToDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -26,11 +27,19 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), DriverFeature.Feature.JOE_1);
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
+
+		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), DriverFeature.Feature.JOE_2);
+
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		application.addTest("Rectangle", actionEvent ->
+				TestFigures.Rectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Five", actionEvent ->
+				TestFigures.Five(DriverFeature.getDriverManager().getCurrentDriver()).execute());
 	}
 
 	/**
@@ -49,7 +58,7 @@ public class TestJobs2dPatterns {
 		ILine iLineDotted = LineFactory.getDottedLine();
 		Job2dDriver dottedLineTestDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(), iLineDotted);
 
-		DriverFeature.addDriver("Buggy Simulator", specialLineTestDriver);
+		DriverFeature.addDriver("Draw Line Simulator", specialLineTestDriver);
 
 		DriverFeature.getDriverManager().setCurrentDriver(specialLineTestDriver);
 

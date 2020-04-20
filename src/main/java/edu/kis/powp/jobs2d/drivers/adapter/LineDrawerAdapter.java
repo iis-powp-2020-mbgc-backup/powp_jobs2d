@@ -35,6 +35,6 @@ public class LineDrawerAdapter implements Job2dDriver {
 
     @Override
     public String toString() {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "Draw Line Simulator";
     }
 }
