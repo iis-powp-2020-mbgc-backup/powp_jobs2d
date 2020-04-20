@@ -1,16 +1,16 @@
 package edu.kis.powp.command;
 
-import edu.kis.powp.jobs2d.Job2dDriver;
-
 import java.util.ArrayList;
 
 public class ComplexCommand implements DriverCommand {
-    private Job2dDriver job2dDriver;
     private ArrayList<DriverCommand> commands;
 
-    public ComplexCommand(Job2dDriver job2dDriver) {
-        this.job2dDriver = job2dDriver;
+    public ComplexCommand() {
         commands = new ArrayList<>();
+    }
+
+    public ComplexCommand(ArrayList<DriverCommand> commands) {
+        this.commands = commands;
     }
 
     public void add(DriverCommand driverCommand) {
@@ -19,10 +19,6 @@ public class ComplexCommand implements DriverCommand {
 
     public void remove(int id) {
         commands.remove(id);
-    }
-
-    public void set(ArrayList<DriverCommand> commands) {
-        this.commands = commands;
     }
 
     @Override

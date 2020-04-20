@@ -4,7 +4,7 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 
 public class ComplexCommandFactory {
     public static ComplexCommand rectangle(Job2dDriver driver, int x, int y, int w, int h) {
-        ComplexCommand complexCommand = new ComplexCommand(driver);
+        ComplexCommand complexCommand = new ComplexCommand();
         complexCommand.add(new SetPositionCommand(driver, x, y));
         complexCommand.add(new OperateToCommand(driver, x + w, y));
         complexCommand.add(new OperateToCommand(driver, x + w, y + h));
@@ -15,7 +15,7 @@ public class ComplexCommandFactory {
     }
 
     public static ComplexCommand circle(Job2dDriver driver, int x, int y, int r) {
-        ComplexCommand complexCommand = new ComplexCommand(driver);
+        ComplexCommand complexCommand = new ComplexCommand();
         double prevX = r;
         double prevY = r;
         complexCommand.add(new SetPositionCommand(driver, (int) prevX + x, (int) prevY + y));
