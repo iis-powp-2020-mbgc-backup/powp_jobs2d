@@ -9,6 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.BasicFiguresFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.Jobs2dDriverToDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -30,6 +31,11 @@ public class TestJobs2dPatterns {
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+
+		application.addTest("Figure Rectangle", actionEvent -> BasicFiguresFactory.getRectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Figure Triangle", actionEvent -> BasicFiguresFactory.getTriangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Figure Small Square", actionEvent -> BasicFiguresFactory.getSmallSquare(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Figure Big Square", actionEvent -> BasicFiguresFactory.getBigSquare(DriverFeature.getDriverManager().getCurrentDriver()).execute());
 	}
 
 	/**
