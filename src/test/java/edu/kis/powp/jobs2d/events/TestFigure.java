@@ -6,5 +6,7 @@ public enum TestFigure {
 	FIGURE_JANE,
 	TRIANGLE,
 	SQUARE,
-	HEXAGON
+	HEXAGON,
+	FIGURE_JOE_1_CC,
+	FIGURE_JOE_2_CC
 }

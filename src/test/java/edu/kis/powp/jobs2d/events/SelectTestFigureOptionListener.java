@@ -3,6 +3,7 @@ package edu.kis.powp.jobs2d.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import edu.kis.powp.jobs2d.command.ComplexCommandGenerator;
 import edu.kis.powp.jobs2d.command.ShapeFactory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.JaneFiguresDriver;
@@ -44,6 +45,18 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				
 			case HEXAGON:
 				ShapeFactory.createHexagon(100, driverManager.getCurrentDriver()).execute();
+				break;
+				
+			case FIGURE_JOE_1_CC:
+				ComplexCommandGenerator generator1 = new ComplexCommandGenerator(driverManager.getCurrentDriver());
+				FiguresJoe.figureScript1(generator1);
+				generator1.get().execute();
+				break;
+				
+			case FIGURE_JOE_2_CC:
+				ComplexCommandGenerator generator2 = new ComplexCommandGenerator(driverManager.getCurrentDriver());
+				FiguresJoe.figureScript2(generator2);
+				generator2.get().execute();
 				break;
 		}
 	}
