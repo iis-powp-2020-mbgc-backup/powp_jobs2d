@@ -35,6 +35,12 @@ public class TestJobs2dPatterns {
 
 		application.addTest("Driver Commands Test Figure", new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(), FigureType.DRIVER_COMMANDS_TEST_FIGURE));
+
+		application.addTest("Rectangle with complex command", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.RECTANGLE_COMPLEX_COMMAND));
+
+		application.addTest("Triangle with complex command", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.TRIANGLE_COMPLEX_COMMAND));
 	}
 
 	/**
