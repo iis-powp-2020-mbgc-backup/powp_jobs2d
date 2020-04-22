@@ -10,11 +10,11 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
-import edu.kis.powp.jobs2d.drivers.command.*;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener.FigureType;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -25,32 +25,22 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
-		application.addTest("Figure Jane", selectTestFigureOptionListener);
-		application.addTest("Diamond", e -> {
-			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
-			new SetPositionCommand(-200, -100).execute(driver);
-			new OperateToCommand(-100,-200).execute(driver);
-			new OperateToCommand(100,-200).execute(driver);
-			new OperateToCommand(200,-100).execute(driver);
-			new OperateToCommand(0,100).execute(driver);
-			new OperateToCommand(-200,-100).execute(driver);
-		});
-		application.addTest("Arrow", e -> {
-			ComplexCommandBuilder complexCommandBuilder = new ComplexCommandBuilder();
-			complexCommandBuilder.addCommand(new SetPositionCommand(-200, 0));
-			complexCommandBuilder.addCommand(new OperateToCommand(100, 0));
-			complexCommandBuilder.addCommand(new OperateToCommand(100, 100));
-			complexCommandBuilder.addCommand(new OperateToCommand(200, 0));
-			complexCommandBuilder.addCommand(new OperateToCommand(100, -100));
-			complexCommandBuilder.addCommand(new OperateToCommand(100, 0));
-			DriverCommand command = complexCommandBuilder.build();
-			command.execute(DriverFeature.getDriverManager().getCurrentDriver());
-		});
+		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.FIGURE_JOE_1));
+		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.FIGURE_JOE_2));
+		application.addTest("Figure Jane", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.FIGURE_JANE));
+		application.addTest("Diamond", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.DIAMOND));
+		application.addTest("Arrow", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.ARROW));
+		application.addTest("Square", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.SQUARE));
+		application.addTest("Random Square", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureType.RANDOM_SQUARE));
+
 	}
 
 	/**
