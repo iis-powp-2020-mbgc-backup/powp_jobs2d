@@ -37,4 +37,12 @@ public class DrawerAdapter extends DrawPanelController implements Job2dDriver {
 	public String toString() {
 		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
 	}
+
+	public int getStartX() {
+		return startX;
+	}
+
+	public int getStartY() {
+		return startY;
+	}
 }
