@@ -12,7 +12,7 @@ public class OperateToCommand implements DriverCommand {
 	
 	@Override
 	public void execute() {
-		this.driver.operateTo(x, y);
+		driver.operateTo(x, y);
 	}
 	
 	private int x;
