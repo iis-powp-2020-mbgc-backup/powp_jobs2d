@@ -9,6 +9,7 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 public class RectangleFigure {
 
 	public RectangleFigure(Job2dDriver driver, int leftUpX, int leftUpY, int length, int height) {
+		this.builder = ComplexCommand.builder();
 		this.driver = driver;
 		this.leftUpX = leftUpX;
 		this.leftUpY = leftUpY;

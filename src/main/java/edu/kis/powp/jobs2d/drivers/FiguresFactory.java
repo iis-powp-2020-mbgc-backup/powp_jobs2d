@@ -11,6 +11,6 @@ public class FiguresFactory {
 	}
 	
 	public DriverCommand getRectangle(Job2dDriver driver) {
-		return new RectangleFigure(driver, 0, 0, 50, 100).get();
+		return new RectangleFigure(driver, -50, -50, 50, 100).get();
 	}
 }

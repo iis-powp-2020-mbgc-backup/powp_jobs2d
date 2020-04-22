@@ -9,6 +9,7 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 public class SquareFigure {
 	
 	public SquareFigure(Job2dDriver driver, int leftUpX, int leftUpY, int length) {
+		this.builder = ComplexCommand.builder();
 		this.driver = driver;
 		this.leftUpX = leftUpX;
 		this.leftUpY = leftUpY;
