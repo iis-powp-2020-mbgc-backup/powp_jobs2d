@@ -9,6 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.ComplexCommandsFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.AdaptiveDrawAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -43,18 +44,23 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupDrivers(Application application) {
-		Job2dDriver loggerDriver = new LoggerDriver();
-		DriverFeature.addDriver("Logger Driver", loggerDriver);
-		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
 		Job2dDriver testDriver = new AdaptiveDrawAdapter(LineFactory.getBasicLine(), DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Basic Line Simulator", testDriver);
+		DriverFeature.getDriverManager().setCurrentDriver(testDriver);
 
 		Job2dDriver specialTestDriver = new AdaptiveDrawAdapter(LineFactory.getSpecialLine(), DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Special Line Simulator", specialTestDriver);
 
 		Job2dDriver dottedTestDriver = new AdaptiveDrawAdapter(LineFactory.getDottedLine(), DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Dotted Line Simulator", dottedTestDriver);
+
+		application.addTest("Rectangle", action -> ComplexCommandsFactory
+				.createRectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Pentagram", action -> ComplexCommandsFactory
+				.createPentagram(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("xD", action -> ComplexCommandsFactory
+				.createXD(DriverFeature.getDriverManager().getCurrentDriver()).execute());
 
 		DriverFeature.updateDriverInfo();
 	}
