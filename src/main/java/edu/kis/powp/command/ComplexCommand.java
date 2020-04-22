@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ComplexCommand implements DriverCommand{
+public class ComplexCommand implements DriverCommand {
     private List<DriverCommand> commandList;
 
     public ComplexCommand(DriverCommand... commands) {
@@ -14,12 +14,12 @@ public class ComplexCommand implements DriverCommand{
     }
 
     public ComplexCommand(List<DriverCommand> commandList) {
-        this.commandList = commandList;
+        this.commandList = new ArrayList<>(commandList);
     }
 
     @Override
     public void execute(Job2dDriver job2dDriver) {
-        for(DriverCommand command: commandList) {
+        for (DriverCommand command : commandList) {
             command.execute(job2dDriver);
         }
     }
