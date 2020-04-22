@@ -3,6 +3,8 @@ package edu.kis.powp.jobs2d.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import edu.kis.powp.jobs2d.command.CommandGenerator;
+import edu.kis.powp.jobs2d.command.Factory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJane;
@@ -24,6 +26,20 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 		} else if (e.getActionCommand().equals("Figure Jane")) {
 			FiguresJane.figureScript(new DriverAdapter(driverManager.getCurrentDriver()));
+		}else if (e.getActionCommand().equals("Square")) {
+			Factory.drawSquare(driverManager.getCurrentDriver(), 100).execute();
+		}else if (e.getActionCommand().equals("Rectangle")) {
+			Factory.drawRectangle(driverManager.getCurrentDriver(), 100).execute();
+		}else if (e.getActionCommand().equals("Triangle")) {
+			Factory.drawTriangle(driverManager.getCurrentDriver(), 100).execute();
+		}else if (e.getActionCommand().equals("Figure Joe 1 C")) {
+			CommandGenerator commandGenerator = new CommandGenerator(driverManager.getCurrentDriver());
+			FiguresJoe.figureScript1(commandGenerator);
+			commandGenerator.get().execute();
+		}else if (e.getActionCommand().equals("Figure Joe 2 C")) {
+			CommandGenerator commandGenerator = new CommandGenerator(driverManager.getCurrentDriver());
+			FiguresJoe.figureScript2(commandGenerator);
+			commandGenerator.get().execute();
 		}
 	}
 }

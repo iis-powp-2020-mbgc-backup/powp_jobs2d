@@ -8,6 +8,11 @@ public class ComplexCommand implements DriverCommand {
     public ComplexCommand(){
         commandSeq = new Vector<DriverCommand>();
     }
+
+    public void add(DriverCommand command) {
+        commandSeq.add(command);
+    }
+
     @Override
     public void execute(){
         for (DriverCommand command : commandSeq) {
