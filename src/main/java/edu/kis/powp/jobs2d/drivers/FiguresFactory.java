@@ -6,15 +6,24 @@ import edu.kis.powp.command.DriverCommand;
 
 public class FiguresFactory {
 	
-	public DriverCommand getSquare(Job2dDriver driver) {
-		return new SquareFigure(driver, 0, 0, 50).get();
+	public FiguresFactory() {
+		figure = null;
 	}
 	
-	public DriverCommand getRectangle(Job2dDriver driver) {
-		return new RectangleFigure(driver, -50, -50, 50, 100).get();
+	public DriverCommand drawSquare(Job2dDriver driver) {
+		figure = new SquareFigure(driver, 0, 0, 50);
+		return figure.draw();
 	}
 	
-	public DriverCommand getCircle(Job2dDriver driver) {
-		return new CircleFigure(driver, 60, 60, 50).get();
+	public DriverCommand drawRectangle(Job2dDriver driver) {
+		figure = new RectangleFigure(driver, -100, -100, 50, 100);
+		return figure.draw();
 	}
+	
+	public DriverCommand drawCircle(Job2dDriver driver) {
+		figure = new CircleFigure(driver, 100, 100, 50);
+		return figure.draw();
+	}
+	
+	private IFigure figure;
 }

@@ -6,7 +6,7 @@ import edu.kis.powp.command.OperateToCommand;
 import edu.kis.powp.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-public class SquareFigure {
+public class SquareFigure implements IFigure {
 	
 	public SquareFigure(Job2dDriver driver, int leftUpX, int leftUpY, int length) {
 		this.builder = ComplexCommand.builder();
@@ -16,7 +16,8 @@ public class SquareFigure {
 		this.length = length;
 	}
 	
-	public DriverCommand get() {
+	@Override
+	public DriverCommand draw() {
 		
 		builder.addCommand(new SetPositionCommand(leftUpX, leftUpY, driver));
 		builder.addCommand(new OperateToCommand(leftUpX, leftUpY + length, driver));

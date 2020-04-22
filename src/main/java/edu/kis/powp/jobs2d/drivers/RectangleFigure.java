@@ -6,7 +6,7 @@ import edu.kis.powp.command.OperateToCommand;
 import edu.kis.powp.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-public class RectangleFigure {
+public class RectangleFigure implements IFigure {
 
 	public RectangleFigure(Job2dDriver driver, int leftUpX, int leftUpY, int length, int height) {
 		this.builder = ComplexCommand.builder();
@@ -17,7 +17,8 @@ public class RectangleFigure {
 		this.height = height;
 	}
 	
-	public DriverCommand get() {
+	@Override
+	public DriverCommand draw() {
 		
 		builder.addCommand(new SetPositionCommand(leftUpX, leftUpY, driver));
 		builder.addCommand(new OperateToCommand(leftUpX, leftUpY + height, driver));

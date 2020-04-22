@@ -6,7 +6,7 @@ import edu.kis.powp.command.OperateToCommand;
 import edu.kis.powp.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-public class CircleFigure {
+public class CircleFigure implements IFigure {
 
 	public CircleFigure(Job2dDriver driver, int circleCenterX, int circleCenterY, int radius) {
 		this.builder = ComplexCommand.builder();
@@ -16,7 +16,8 @@ public class CircleFigure {
 		this.radius = radius;
 	}
 	
-	public DriverCommand get() {
+	@Override
+	public DriverCommand draw() {
 		
 		int r2 = radius * radius;
 		
