@@ -7,10 +7,10 @@ public class ComplexCommand implements DriverCommand {
 
     private List<DriverCommand> commands = new ArrayList<>();
 
-    private ComplexCommand() {
+    ComplexCommand() {
     }
 
-    public void addCommand(DriverCommand command) {
+    void addCommand(DriverCommand command) {
         this.commands.add(command);
     }
 
