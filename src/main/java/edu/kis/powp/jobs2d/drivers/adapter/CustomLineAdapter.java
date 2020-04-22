@@ -1,7 +1,5 @@
-package edu.kis.powp.jobs2d.drivers;
-
+package edu.kis.powp.jobs2d.drivers.adapter;
 import edu.kis.legacy.drawer.shape.line.AbstractLine;
-import edu.kis.powp.jobs2d.drivers.adapter.CustomLine;
 
 import java.awt.*;
 
