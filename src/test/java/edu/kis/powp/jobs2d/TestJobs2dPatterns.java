@@ -30,9 +30,9 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		
-		application.addTest("Square", actionEvent -> figuresFactory.drawSquare(DriverFeature.getDriverManager().getCurrentDriver()).execute());
-		application.addTest("Rectangle", actionEvent -> figuresFactory.drawRectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
-		application.addTest("Circle", actionEvent -> figuresFactory.drawCircle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Square", actionEvent -> figuresFactory.drawSquare(DriverFeature.getDriverManager().getCurrentDriver(), 0, 0, 50).execute());
+		application.addTest("Rectangle", actionEvent -> figuresFactory.drawRectangle(DriverFeature.getDriverManager().getCurrentDriver(), -100, -100, 50, 100).execute());
+		application.addTest("Circle", actionEvent -> figuresFactory.drawCircle(DriverFeature.getDriverManager().getCurrentDriver(), 100, 100, 50).execute());
 	}
 
 	/**

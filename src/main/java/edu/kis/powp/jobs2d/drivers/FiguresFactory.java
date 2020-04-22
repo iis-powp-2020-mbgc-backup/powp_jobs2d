@@ -10,18 +10,18 @@ public class FiguresFactory {
 		figure = null;
 	}
 	
-	public DriverCommand drawSquare(Job2dDriver driver) {
-		figure = new SquareFigure(driver, 0, 0, 50);
+	public DriverCommand drawSquare(Job2dDriver driver, int leftUpX, int leftUpY, int length) {
+		figure = new SquareFigure(driver, leftUpX, leftUpY, length);
 		return figure.draw();
 	}
 	
-	public DriverCommand drawRectangle(Job2dDriver driver) {
-		figure = new RectangleFigure(driver, -100, -100, 50, 100);
+	public DriverCommand drawRectangle(Job2dDriver driver, int leftUpX, int leftUpY, int length, int height) {
+		figure = new RectangleFigure(driver, leftUpX, leftUpY, length, height);
 		return figure.draw();
 	}
 	
-	public DriverCommand drawCircle(Job2dDriver driver) {
-		figure = new CircleFigure(driver, 100, 100, 50);
+	public DriverCommand drawCircle(Job2dDriver driver, int circleCenterX, int circleCenterY, int radius) {
+		figure = new CircleFigure(driver, circleCenterX, circleCenterY, radius);
 		return figure.draw();
 	}
 	
