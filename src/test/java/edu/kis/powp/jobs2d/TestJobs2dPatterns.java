@@ -32,6 +32,7 @@ public class TestJobs2dPatterns {
 		
 		application.addTest("Square", actionEvent -> figuresFactory.getSquare(DriverFeature.getDriverManager().getCurrentDriver()).execute());
 		application.addTest("Rectangle", actionEvent -> figuresFactory.getRectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Circle", actionEvent -> figuresFactory.getCircle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
 	}
 
 	/**
