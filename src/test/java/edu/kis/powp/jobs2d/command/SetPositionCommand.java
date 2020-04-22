@@ -4,18 +4,16 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 
 public class SetPositionCommand implements DriverCommand {
 
-    Job2dDriver driver;
-    int x, y;
+    private int x, y;
 
-    public SetPositionCommand(Job2dDriver driver, int x, int y){
-        this.driver = driver;
+    public SetPositionCommand(int x, int y){
         this.x = x;
         this.y = y;
     }
 
     @Override
-    public void executeCommand() {
-        driver.setPosition(x, y);
+    public void executeCommand(Job2dDriver driver) {
+        driver.setPosition(this.x, this.y);
     }
 
 }
