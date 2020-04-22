@@ -10,10 +10,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
-import edu.kis.powp.jobs2d.drivers.command.ComplexCommand;
-import edu.kis.powp.jobs2d.drivers.command.DriverCommand;
-import edu.kis.powp.jobs2d.drivers.command.OperateToCommand;
-import edu.kis.powp.jobs2d.drivers.command.SetPositionCommand;
+import edu.kis.powp.jobs2d.drivers.command.*;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -44,16 +41,16 @@ public class TestJobs2dPatterns {
 			new OperateToCommand(-200,-100).execute(driver);
 		});
 		application.addTest("Arrow", e -> {
-			ComplexCommand complexCommand = new ComplexCommand();
-			complexCommand.addCommand(new SetPositionCommand(-200, 0));
-			complexCommand.addCommand(new OperateToCommand(100, 0));
-			complexCommand.addCommand(new OperateToCommand(100, 100));
-			complexCommand.addCommand(new OperateToCommand(200, 0));
-			complexCommand.addCommand(new OperateToCommand(100, -100));
-			complexCommand.addCommand(new OperateToCommand(100, 0));
-			complexCommand.execute(DriverFeature.getDriverManager().getCurrentDriver());
+			ComplexCommandBuilder complexCommandBuilder = new ComplexCommandBuilder();
+			complexCommandBuilder.addCommand(new SetPositionCommand(-200, 0));
+			complexCommandBuilder.addCommand(new OperateToCommand(100, 0));
+			complexCommandBuilder.addCommand(new OperateToCommand(100, 100));
+			complexCommandBuilder.addCommand(new OperateToCommand(200, 0));
+			complexCommandBuilder.addCommand(new OperateToCommand(100, -100));
+			complexCommandBuilder.addCommand(new OperateToCommand(100, 0));
+			DriverCommand command = complexCommandBuilder.build();
+			command.execute(DriverFeature.getDriverManager().getCurrentDriver());
 		});
-
 	}
 
 	/**

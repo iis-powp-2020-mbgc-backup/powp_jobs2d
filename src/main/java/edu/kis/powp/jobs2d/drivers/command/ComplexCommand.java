@@ -7,15 +7,15 @@ import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
 
-    List<DriverCommand> commands = new LinkedList<>();
+    private final LinkedList<DriverCommand> commands;
+
+    public ComplexCommand(LinkedList<DriverCommand> commands) {
+        this.commands = commands;
+    }
 
     public void execute(Job2dDriver driver) {
         for (DriverCommand command : commands) {
             command.execute(driver);
         }
-    }
-
-    public void addCommand(DriverCommand driver) {
-        commands.add(driver);
     }
 }
