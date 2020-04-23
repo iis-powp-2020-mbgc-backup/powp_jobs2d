@@ -1,17 +1,18 @@
 package edu.kis.powp.command;
 
 import edu.kis.powp.jobs2d.Job2dDriver;
+import edu.kis.powp.jobs2d.drivers.DriverManager;
 
 public class OperateToCommand implements DriverCommand {
 
-    private int x;
-    private int y;
-    private Job2dDriver job2dDriver;
+    private final int x;
+    private final int y;
+    private final Job2dDriver job2dDriver;
 
-    public OperateToCommand(int x, int y, Job2dDriver driver) {
+    public OperateToCommand(int x, int y, DriverManager driverManager) {
         this.x = x;
         this.y = y;
-        this.job2dDriver = driver;
+        this.job2dDriver = driverManager.getCurrentDriver();
     }
 
     @Override
