@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
-    List<DriverCommand> drivers = new ArrayList<>();
+    private List<DriverCommand> drivers;
 
     public ComplexCommand(List<DriverCommand> drivers){
         this.drivers = drivers;
