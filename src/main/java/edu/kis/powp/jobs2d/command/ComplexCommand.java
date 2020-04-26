@@ -10,7 +10,8 @@ public class ComplexCommand implements DriverCommand {
 
     @Override
     public void execute() {
-        for (DriverCommand command: commandsList)
+        for (DriverCommand command: commandsList){
             command.execute();
+        }
     }
 }
