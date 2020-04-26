@@ -21,16 +21,16 @@ public class LineDrawerAdapter implements Job2dDriver {
     }
 
     @Override
-    public void setPosition(int startX, int startY) {
-        this.startX = startX;
-        this.startY = startY;
+    public void setPosition(int x, int y) {
+        this.startX = x;
+        this.startY = y;
     }
 
     @Override
-    public void operateTo(int endX, int endY) {
+    public void operateTo(int x, int y) {
         iLine.setStartCoordinates(this.startX, this.startY);
-        iLine.setEndCoordinates(endY, endY);
-        setPosition(endX, endY);
+        iLine.setEndCoordinates(x, y);
+        setPosition(x, y);
         drawPanelController.drawLine(iLine);
     }
 
