@@ -2,8 +2,11 @@ package edu.kis.powp.jobs2d.figures;
 
 import edu.kis.powp.jobs2d.Job2dDriver;
 import edu.kis.powp.jobs2d.drivers.adapter.ComplexCommand;
+import edu.kis.powp.jobs2d.drivers.adapter.DriverCommand;
 import edu.kis.powp.jobs2d.drivers.adapter.OperateToCommand;
 import edu.kis.powp.jobs2d.drivers.adapter.SetPositionCommand;
+
+import java.util.ArrayList;
 
 public class FigureCommand {
     public static void figureScript(Job2dDriver job2dDriver) {
@@ -15,7 +18,7 @@ public class FigureCommand {
     }
 
     public static void figureScript2(Job2dDriver job2dDriver) {
-        ComplexCommand complexCommand = new ComplexCommand();
+        ComplexCommand complexCommand = new ComplexCommand(new ArrayList<DriverCommand>());
 
         complexCommand.addCommand(new SetPositionCommand(0, 0));
 
