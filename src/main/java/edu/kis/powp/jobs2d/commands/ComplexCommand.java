@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ComplexCommand implements DriverCommand {
 
-    private ArrayList<DriverCommand> commands;
+    private ArrayList<DriverCommand> commands = new ArrayList<>();
 
     public ComplexCommand() {
     }
@@ -14,7 +14,9 @@ public class ComplexCommand implements DriverCommand {
     }
 
     public void addCommand(DriverCommand command) {
-        this.commands.add(command);
+        if( command != null ){
+            this.commands.add(command);
+        }
     }
 
     @Override

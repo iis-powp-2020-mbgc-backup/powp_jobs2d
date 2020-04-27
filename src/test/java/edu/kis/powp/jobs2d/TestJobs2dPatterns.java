@@ -9,6 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.commands.CommandFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -31,6 +32,10 @@ public class TestJobs2dPatterns {
 		application.addTest(SelectTestFigureOptionListener.FIGURE_JOE_1, selectTestFigureOptionListener);
 		application.addTest(SelectTestFigureOptionListener.FIGURE_JOE_2, selectTestFigureOptionListener);
 		application.addTest(SelectTestFigureOptionListener.FIGURE_JANE_1, selectTestFigureOptionListener);
+		application.addTest(SelectTestFigureOptionListener.FIGURE_RECTANGLE, selectTestFigureOptionListener);
+		application.addTest(SelectTestFigureOptionListener.FIGURE_TRIANGLE, selectTestFigureOptionListener);
+		application.addTest(SelectTestFigureOptionListener.FIGURE_DOUBLED_TRIANGLE, selectTestFigureOptionListener);
+
 	}
 
 	/**
