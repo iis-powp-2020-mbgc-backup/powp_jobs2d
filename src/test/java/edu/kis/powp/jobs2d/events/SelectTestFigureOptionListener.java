@@ -29,6 +29,8 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			FiguresJane.figureScript(new CurrentDriverAdapter(driverManager.getCurrentDriver()));
 		} else if (this.figureType.equals(FigureType.FIGURE_COMMAND)) {
 			FigureCommand.figureScript(new CurrentDriverAdapter(driverManager.getCurrentDriver()));
+		} else if (this.figureType.equals(FigureType.FIGURE_COMPLEX)) {
+			FigureCommand.figureScriptCommand(new CurrentDriverAdapter(driverManager.getCurrentDriver()));
 		}
 	}
 }
