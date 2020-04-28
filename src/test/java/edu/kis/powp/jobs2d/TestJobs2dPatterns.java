@@ -1,14 +1,16 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.adapter.CustomLine;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawAdapter;
+import edu.kis.powp.jobs2d.events.Figure;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
@@ -22,12 +24,18 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
-
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
-		application.addTest("Command test", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), Figure.FIGURE_JOE_1));
+		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), Figure.FIGURE_JOE_2));
+		application.addTest("Command test", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), Figure.COMMAND_TEST));
+		application.addTest("Complex command test", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), Figure.COMPLEX_COMMAND));
+		application.addTest("Rectangle CC", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), Figure.RECTANGLE_COMPEX_COMMAND));
+		application.addTest("Rhombus CC", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), Figure.RHOMBUS_COMPLEX_COMMAND));
 	}
 
 	/**
@@ -40,7 +48,7 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new DrawAdapter();
+		Job2dDriver testDriver = new LineDrawerAdapter();
 		DriverFeature.addDriver("Regular line", testDriver);
 
 		Job2dDriver dottedDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
@@ -48,6 +56,9 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver specialDriver = new LineDrawerAdapter(LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special line", specialDriver);
+
+		Job2dDriver customDriver = new LineDrawerAdapter(new CustomLine(Color.DARK_GRAY, 1, false));
+		DriverFeature.addDriver("Custom line", customDriver);
 
 
 		DriverFeature.updateDriverInfo();
