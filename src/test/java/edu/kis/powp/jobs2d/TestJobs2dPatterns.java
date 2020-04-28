@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.ExtentedLineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
