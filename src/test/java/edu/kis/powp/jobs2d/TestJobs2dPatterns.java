@@ -9,7 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.DrawController;
+import edu.kis.powp.jobs2d.command.ShapeFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.FigureJoe;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -22,20 +22,24 @@ public class TestJobs2dPatterns {
 
 	/**
 	 * Setup test concerning preset figures in context.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
 		SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureJoe.SHAPE_1);
-
 		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureJoe.SHAPE_2);
+
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+
+		application.addTest("Rectangle", event -> ShapeFactory.makeRectangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Triangle", event -> ShapeFactory.makeTriangle(DriverFeature.getDriverManager().getCurrentDriver()).execute());
+		application.addTest("Square", event -> ShapeFactory.makeSquare(DriverFeature.getDriverManager().getCurrentDriver()).execute());
 	}
 
 	/**
 	 * Setup driver manager, and set default driver for application.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupDrivers(Application application) {
@@ -57,7 +61,7 @@ public class TestJobs2dPatterns {
 
 	/**
 	 * Auxiliary routines to enable using Buggy Simulator.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupDefaultDrawerVisibilityManagement(Application application) {
@@ -69,7 +73,7 @@ public class TestJobs2dPatterns {
 
 	/**
 	 * Setup menu for adjusting logging settings.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupLogger(Application application) {
