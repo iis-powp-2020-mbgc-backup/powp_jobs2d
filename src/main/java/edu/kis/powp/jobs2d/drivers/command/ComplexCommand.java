@@ -1,9 +1,10 @@
 package edu.kis.powp.jobs2d.drivers.command;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComplexCommand implements DriverCommand
 {
-    private ArrayList<DriverCommand> commands;
+    private List<DriverCommand> commands;
 
     public ComplexCommand() {
         this.commands = new ArrayList<>();
