@@ -7,7 +7,9 @@ import edu.kis.powp.jobs2d.commands.ComplexCommand;
 import edu.kis.powp.jobs2d.drawings.DriverCommandsTestDrawing;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
-import edu.kis.powp.jobs2d.factories.ShapeFactory;
+import edu.kis.powp.jobs2d.factories.AbstractComplexCommandFactory;
+import edu.kis.powp.jobs2d.factories.RectangleCommandFactory;
+import edu.kis.powp.jobs2d.factories.TriangleCommandFactory;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
@@ -22,7 +24,8 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ComplexCommand command;
+
+		AbstractComplexCommandFactory factory;
 
 		switch (figureType){
 			case FIGURE_JOE_1:
@@ -35,12 +38,12 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				DriverCommandsTestDrawing.figureScript(driverManager.getCurrentDriver());
 				break;
 			case RECTANGLE_COMPLEX_COMMAND:
-				command = ShapeFactory.createRectangleCommand();
-				command.execute(driverManager.getCurrentDriver());
+				factory = new RectangleCommandFactory();
+				factory.getComplexCommand().execute(driverManager.getCurrentDriver());
 				break;
 			case TRIANGLE_COMPLEX_COMMAND:
-				command = ShapeFactory.createTriangleCommand();
-				command.execute(driverManager.getCurrentDriver());
+				factory = new TriangleCommandFactory();
+				factory.getComplexCommand().execute(driverManager.getCurrentDriver());
 				break;
 		}
 	}
