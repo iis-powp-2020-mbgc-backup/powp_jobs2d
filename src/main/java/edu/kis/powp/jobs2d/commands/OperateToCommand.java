@@ -20,15 +20,17 @@ public class OperateToCommand implements DriverCommand {
         return x;
     }
 
-    public void setX(int x) {
+    public OperateToCommand setX(int x) {
         this.x = x;
+        return this;
     }
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public OperateToCommand setY(int y) {
         this.y = y;
+        return this;
     }
 }
