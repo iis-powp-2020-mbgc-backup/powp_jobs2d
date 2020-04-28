@@ -41,9 +41,9 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriverBasicLine = new LineDrawerAdapter(CustomLineFactory.getBasicLine());
-		Job2dDriver testDriverSpecialLine = new LineDrawerAdapter(CustomLineFactory.getSpecialLine());
-		Job2dDriver testDriverDottedLine = new LineDrawerAdapter(CustomLineFactory.getDottedLine());
+		Job2dDriver testDriverBasicLine = new LineDrawerAdapter(CustomLineFactory.getBasicLine(), DrawerFeature.getDrawerController());
+		Job2dDriver testDriverSpecialLine = new LineDrawerAdapter(CustomLineFactory.getSpecialLine(), DrawerFeature.getDrawerController());
+		Job2dDriver testDriverDottedLine = new LineDrawerAdapter(CustomLineFactory.getDottedLine(), DrawerFeature.getDrawerController());
 
 		DriverFeature.addDriver("BasicLine Simulator", testDriverBasicLine);
 		DriverFeature.addDriver("SpecialLine Simulator", testDriverSpecialLine);
