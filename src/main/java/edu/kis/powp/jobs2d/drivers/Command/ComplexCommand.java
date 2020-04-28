@@ -7,10 +7,8 @@ import java.util.ArrayList;
 public class ComplexCommand implements DriverCommand {
 
     ArrayList<DriverCommand> commands;
-    Job2dDriver job2dDriver;
 
-    public ComplexCommand(Job2dDriver job2dDriver) {
-        this.job2dDriver = job2dDriver;
+    public ComplexCommand() {
         commands = new ArrayList<>();
     }
 
@@ -20,6 +18,7 @@ public class ComplexCommand implements DriverCommand {
 
     @Override
     public void execute(Job2dDriver job2dDriver) {
+        System.out.println("complex execute");
         for(int i = 0; i < commands.size(); i++){
             commands.get(i).execute(job2dDriver);
         }
