@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.DrawingType;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.drivers.command.commandFactory;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.powp.jobs2d.drivers.adapter.AbstractDriverAdapter;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJane;
@@ -30,5 +31,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 		if (drawingType == DrawingType.FIGURE_JANE) {
 			FiguresJane.figureScript(new AbstractDriverAdapter(driverManager.getCurrentDriver()));
 		}
+		if (drawingType == DrawingType.SQUARE) {
+			commandFactory.createSquare(driverManager.getCurrentDriver()).execute();
+		}
+
 	}
 }

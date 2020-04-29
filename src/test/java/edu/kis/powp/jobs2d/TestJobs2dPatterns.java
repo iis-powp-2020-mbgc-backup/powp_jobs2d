@@ -14,6 +14,8 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.command.commandFactory;
+
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -28,11 +30,17 @@ public class TestJobs2dPatterns {
         application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), DrawingType.FIGURE_1));
         application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), DrawingType.FIGURE_2));
         application.addTest("Figure Jane", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), DrawingType.FIGURE_JANE));
+		application.addTest("Square", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), DrawingType.SQUARE));
+
+
 	}
+
+
+
 
 	/**
 	 * Setup driver manager, and set default driver for application.
-	 * 
+	 * e
 	 * @param application Application context.
 	 */
 	private static void setupDrivers(Application application) {
