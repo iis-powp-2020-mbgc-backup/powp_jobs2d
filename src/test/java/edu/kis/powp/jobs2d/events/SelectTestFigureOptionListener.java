@@ -3,6 +3,7 @@ package edu.kis.powp.jobs2d.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import edu.kis.powp.command.FigureCommand;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
@@ -26,7 +27,7 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 				break;
 			case FIGURE_COMMAND:
-				System.out.println("Figure command");
+				FigureCommand.figureScript(driverManager.getCurrentDriver());
 				break;
 			default:
 				System.out.println("Figure not exists");
