@@ -34,6 +34,12 @@ public class SelectTestFigureOptionListener implements ActionListener {
 		if (drawingType == DrawingType.SQUARE) {
 			commandFactory.createSquare(driverManager.getCurrentDriver()).execute();
 		}
+		if (drawingType == DrawingType.TRIANGLE) {
+			commandFactory.createTriangle(driverManager.getCurrentDriver()).execute();
+		}
+		if (drawingType == DrawingType.RECTANGLE) {
+			commandFactory.createRectangle(driverManager.getCurrentDriver()).execute();
+		}
 
 	}
 }
