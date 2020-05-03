@@ -14,6 +14,8 @@ import edu.kis.powp.jobs2d.drivers.adapter.JobDriverToDrawer;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.factory.Shape;
+import edu.kis.powp.jobs2d.factory.ShapeFactory;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 
@@ -29,7 +31,12 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest(Shape.FIGURE_JOE_1.label, selectTestFigureOptionListener);
+		application.addTest(Shape.FIGURE_JOE_2.label, selectTestFigureOptionListener);
+		application.addTest(Shape.SQUARE.label, event -> ShapeFactory.square(DriverFeature.getDriverManager().getCurrentDriver()));
+		application.addTest(Shape.TRIANGLE.label, event -> ShapeFactory.triangle(DriverFeature.getDriverManager().getCurrentDriver()));
+		application.addTest(Shape.RECTANGLE.label, event -> ShapeFactory.rectangle(DriverFeature.getDriverManager().getCurrentDriver()));
+
 	}
 
 	/**
