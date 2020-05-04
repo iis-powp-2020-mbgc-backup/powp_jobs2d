@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import edu.kis.powp.command.FigureCommand;
+import edu.kis.powp.command.factories.TriangleComplexCommandFactory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
@@ -31,6 +32,13 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				break;
 			case FIGURE_COMPLEX_TRIANGLE:
 				FigureCommand.complexCommandSquareScript(driverManager.getCurrentDriver());
+				break;
+			case COMPLEX_FACTORY_TRIANGLE:
+				TriangleComplexCommandFactory triangleComplexCommandFactory = new TriangleComplexCommandFactory();
+				triangleComplexCommandFactory.getComplexCommand(driverManager.getCurrentDriver()).execute();
+				break;
+			case COMPLEX_FACTORY_SQUARE:
+				System.out.println("Complex Factory Square");
 				break;
 			default:
 				System.out.println("Figure not exists");
