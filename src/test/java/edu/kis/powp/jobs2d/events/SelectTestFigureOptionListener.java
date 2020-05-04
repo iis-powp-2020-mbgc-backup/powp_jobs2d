@@ -29,6 +29,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			case FIGURE_COMMAND:
 				FigureCommand.figureScript(driverManager.getCurrentDriver());
 				break;
+			case FIGURE_COMPLEX_TRIANGLE:
+				FigureCommand.complexCommandSquareScript(driverManager.getCurrentDriver());
+				break;
 			default:
 				System.out.println("Figure not exists");
 		}
