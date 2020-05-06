@@ -22,6 +22,10 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 		}else if(e.getActionCommand().equals("Square")){
 			FactoryCommand.square(DriverFeature.getDriverManager().getCurrentDriver(),30).execute();
+		}else if(e.getActionCommand().equals("Rectangle")){
+			FactoryCommand.rectangle(DriverFeature.getDriverManager().getCurrentDriver(),30, 50).execute();
+		}else if(e.getActionCommand().equals("Triangle")){
+			FactoryCommand.triangle(DriverFeature.getDriverManager().getCurrentDriver(),30).execute();
 		}else{
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 		}

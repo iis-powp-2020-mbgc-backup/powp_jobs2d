@@ -17,4 +17,25 @@ public class FactoryCommand {
         ComplexCommand cc = new ComplexCommand(listOfCommands);
         return cc;
     }
+    public static DriverCommand rectangle(Job2dDriver job2dDriver, int a, int b) {
+        List<DriverCommand> listOfCommands = new ArrayList<>();
+        listOfCommands.add(new SetPositionCommand(job2dDriver, 0, 0));
+        listOfCommands.add(new OperateToCommand(job2dDriver, 0, a));
+        listOfCommands.add(new OperateToCommand(job2dDriver, b, a));
+        listOfCommands.add(new OperateToCommand(job2dDriver, b, 0));
+        listOfCommands.add(new OperateToCommand(job2dDriver, 0, 0));
+
+        ComplexCommand cc = new ComplexCommand(listOfCommands);
+        return cc;
+    }
+    public static DriverCommand triangle(Job2dDriver job2dDriver, int length) {
+        List<DriverCommand> listOfCommands = new ArrayList<>();
+        listOfCommands.add(new SetPositionCommand(job2dDriver, 0, 0));
+        listOfCommands.add(new OperateToCommand(job2dDriver, length, 0));
+        listOfCommands.add(new OperateToCommand(job2dDriver, length/2, -length));
+        listOfCommands.add(new OperateToCommand(job2dDriver, 0, 0));
+
+        ComplexCommand cc = new ComplexCommand(listOfCommands);
+        return cc;
+    }
 }
